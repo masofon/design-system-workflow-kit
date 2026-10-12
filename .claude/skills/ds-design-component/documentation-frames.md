@@ -66,6 +66,10 @@ local components, and reuse them on every page so every page reads the same:
 - **Description**: a one-line caption of the specimen, e.g. "Five avatars and three hidden, as the
   container narrows." It never re-explains the rule; the eyebrow points at it. *Using it in Figma*
   rows are the exception: they give the instruction, briefly, because that's where it gets read.
+- **Write it the way a person would say it.** Short, plain sentences a designer reads at a glance,
+  not spec shorthand: "Hides the label when there's no room", not "label: hidden @ <min-w". No
+  statement IDs, token paths or arrows in the title or description; the eyebrow carries the
+  reference.
 
 ## Shared base
 

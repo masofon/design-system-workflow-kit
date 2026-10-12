@@ -46,8 +46,9 @@ the answer.
 The four conditions in `crd_how_to` § The ready-for-dev gate:
 
 - `requirements: complete` and `design_specs: complete`
-- **(human)** Design review held — ask who held it, and whether it covered the full § 1 against
-  the library set and section 6
+- **(human)** Design review held during design — ask who held it, and whether it covered the
+  full § 1 against the library set and section 6. Ask it that way: the review happens while
+  designing, not as a separate step after this run
 - Zero `[open]` markers anywhere in section 1
 - Every Open questions row closed, or `deferred: <reason>`
 
@@ -78,7 +79,7 @@ shipped component:
 
 ### 1.4 CRD later sections — warn
 
-Sections 4–6 against `crd_how_to` § Section by section and the review's completeness lens:
+Sections 4–6 against `crd_how_to` § Section by section and `ds-crd-review` § 6 Completeness against the template:
 § 6 Usage filled from an interview and never restating § 1. § 4 only if config § CRDs →
 `brand_validation` is Yes: it lists the foreground/background pairings runtime validates, no
 measured ratios. § 5 only if config § CRDs → `cms_behaviour` is Yes and the component becomes a
@@ -115,9 +116,18 @@ page is eligible and leave it to them.
   (`ds-ticket` § Spinning up an amendment's items).
 - **Every PR merged.** Find each work item's PRs by its ticket ref (config § Tracker →
   `ticket_ref`) with your repo host's CLI (`gh pr list --state all --search …` on GitHub), and
-  confirm each is merged. An open PR is a block; so is a design or CRD work item with none. Each
+  confirm each is merged. An open PR is a block; so is a design or CRD work item with none.
+  **Except a CRD PR held open for this run's own edits** (a status flag, a fix found while
+  checking): not a block. Say so in the report; it merges straight after the run, before
+  closure step 1 moves its item. Each
   PR body carries the ticket ref and matches what merged.
 - **Develop item** carries the CRD link and isn't at stage `blocked`.
+- **Already at `ready_for_dev`?** If the container or develop item got there before this gate
+  passed, report it first, as a warn: the board says ready while the gate doesn't, so dev may
+  start on uncleared work. It isn't a block, since nothing in this run can clear it, and it
+  stops being wrong once the real blocks clear. Don't move it back yourself (config § Tracker
+  stages: forward only); ask the person whether to tell whoever moved it, or to hold dev until
+  then.
 - **Item descriptions** current with what was decided and built.
 - **Owners.** Read the assignee and creator on the container and every item you'd move
   (`ds-ticket` § Two rules, every time).
@@ -150,14 +160,15 @@ goes through `ds-ticket`.
    past `verify`.
 2. **Container and develop item to stage `ready_for_dev`** (`ds-ticket` § Keeping stages in
    sync with PRs). Dev review is the develop item's first step, not a precondition. A develop
-   item already at `in_progress` or later has started — leave it and say so.
+   item already at `in_progress` or later has started — leave it and say so. One already at
+   `ready_for_dev` stays put; say so.
 3. **Clone back on `integration_branch`**, pulled. Remove a leftover worktree only after
    confirming its branch merged, and ask first.
 4. **Hand back every item URL** (config § Tracker → `item_url`), container first.
 
 Apply config § Tracker stages: never change a sprint or iteration, never move an item backward,
 and never move one out of the stages listed there. If a tracker write is refused or hangs,
-follow the tracker adapter § Failure modes.
+follow `ds-ticket` (a permission-classifier block) or the tracker adapter § Failure modes.
 
 ## After build — not this skill
 

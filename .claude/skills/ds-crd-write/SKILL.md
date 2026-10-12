@@ -178,6 +178,9 @@ Move on when a topic is settled; circle back rather than block.
 
 - **Cite precedent when it bites.** "The Link CRD ruled out X for this reason. Yours proposes it
   — rename, or overrule?" Overruling is fine; it becomes a logged decision with a why.
+- **Borrowed is asked, never assumed.** A statement you'd take from a precedent CRD or from the
+  code goes into the interview as a question: "The Link CRD says X. Same here?" Copied in
+  silently, it becomes a default nobody chose, and the person can't tell it from what they said.
 - **Chase the why.** "Two sizes" is a fact. "Two sizes, no evidenced need for a third yet" is a
   decision worth keeping.
 - **A hedge is a prompt, not a marker.** "Probably" or "we might" is often a designer thinking
@@ -248,6 +251,14 @@ Run `ds-simplify-prose` on what you wrote — and again before every later commi
 fix-up rounds after review — then check:
 
 - [ ] Every statement atomic, testable, and using only anatomy nouns
+- [ ] **No values in statements or decisions** (`crd_how_to` § Keeping it tight). Read each one
+  for a px or other unit value, a slash-separated token path, or a text style name from
+  `design_foundations` § Text styles. Say what the part does instead; Figma holds the value
+- [ ] **Every term is one the reader can look up**: an anatomy noun, a term `crd_how_to`
+  defines, or one in config § Paths → `glossary`. Any other house term is defined where it
+  first appears, or replaced with plain words; tell the person, so they can add it to the
+  glossary
+- [ ] Nothing came from a precedent or the code without being asked about in the interview
 - [ ] No fact appears twice; nothing restates Figma, the code or the reference docs
 - [ ] Accessibility passes the boundary test — nothing in it would be true of another component
 - [ ] Every unresolved hedge became `[open]`; every non-testable statement carries `[review]`
@@ -260,9 +271,10 @@ fix-up rounds after review — then check:
 - [ ] Enforcement statements sit in the right CRD
 - [ ] `related_crds` updated in both directions, and you said which files you touched
 
-Present the draft with three lists surfaced, not buried: **the `[open]` markers awaiting design,
-the open questions awaiting answers, and any precedent overrules.** Those are what the human has
-to action.
+Present the draft with four lists surfaced, not buried: **the `[open]` markers awaiting design,
+the open questions awaiting answers, any precedent overrules, and anything agreed but not yet
+written in, with why** (it needs another PR, or it waits on someone). Those are what the human has
+to action. An agreed edit that isn't listed reads as done.
 
 Then state the gate plainly: **ready for dev is computed, never stored** — requirements and
 design specs complete, the design review held, zero `[open]` markers in section 1, every open

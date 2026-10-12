@@ -62,6 +62,7 @@ Relative to the repo root.
 | `crd_filename` | `{Name}_CRD.md` | |
 | `classification` | `docs/design/component-classification.md` | Defines the CRD's `tier`, `composition`, `category` values |
 | `design_foundations` | `docs/design/design-foundations.md` | Your token architecture, text styles, spacing and Figma facts |
+| `glossary` | `docs/design/glossary.md` | Your team's terms (Part 1, filled at setup) and the kit's (Part 2) |
 | `skills_dir` | `.claude/skills/` | |
 
 ## Sources

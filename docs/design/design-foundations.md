@@ -252,6 +252,9 @@ product.** Write the date, and re-test before trusting it.
 - **`setTextStyleIdAsync()` changes the node's resolved font.** Before writing any
   font-dependent property afterwards (restoring `textDecoration`, say), `loadFontAsync` the NEW
   font, or it throws `Cannot write to node with unloaded font`.
+- **A hugging text node with `maxWidth` wraps, but the box stays at `maxWidth`.** Whatever follows
+  it in the row (a required-field asterisk, say) pins to the end of the box, not to the last word.
+  *(2026-10)*
 - **Switching modes or editing instance text needs every brand's fonts loaded.** On an
   "unloaded font" error, parse the family and style from the message, load it and retry.
 
@@ -260,15 +263,22 @@ product.** Write the date, and re-test before trusting it.
 - **A set's default variant comes from canvas POSITION, not child order.** The default is
   whichever variant sits top-left. *(2026-09-09)*
 - **Sets can be `GRID` auto-layout**, where `x`/`y` are computed and can't be written. Place with
-  `child.setGridChildPosition(row, col)`. The readable anchors are `gridRowAnchorIndex` and
+  `child.setGridChildPosition(row, col)`, called on each child, not on the set. The readable anchors are `gridRowAnchorIndex` and
   `gridColumnAnchorIndex`; **`gridRowStart` / `gridColumnStart` throw on read**. The setter
   throws on an occupied cell, so swapping cells in a full grid needs `gridColumnCount` (or
   `gridRowCount`) raised temporarily to park in. *(2026-09-09)*
 - **Grid children ignore the cell.** Auto-layout children dropped into a GRID frame hug, and
   `FILL` is rejected. Pin the tracks to fixed sizes and resize the child to the cell.
   *(2026-09-16)*
+- **Variants of mixed sizes need uniform FIXED tracks.** With HUG or flex tracks, the grid sizes
+  each track to its biggest variant and moves the others as they change. Set every
+  `gridColumnSizes` and `gridRowSizes` entry to FIXED, sized to the largest variant.
+  *(2026-10)*
 - **`resize()` on a FILL or HUG child silently flips it to FIXED.** Restore the sizing mode
   after resizing.
+- **`layoutSizingHorizontal` reads FIXED on a hidden node**, even straight after setting it to
+  FILL, and the setting may not stick. Set `layoutAlign = 'STRETCH'` while the node is visible,
+  then hide it. *(2026-10)*
 - **`rescale()` scales text with the artwork**, so it shrinks type too. Prefer `resize()` on
   auto-layout instances; keep `rescale()` for things that must stay proportional.
 - **`SPACE_BETWEEN` centres a lone child.** When a boolean prop hides a child, Figma drops it
@@ -279,7 +289,7 @@ product.** Write the date, and re-test before trusting it.
   *(2026-08-28)*
 - **`resize()` doesn't refit a GRID set.** After converting a set to GRID or placing children, the
   frame keeps its old size and squeezes flex tracks. Set `gridColumnSizes` and `gridRowSizes` to
-  HUG, then `resize()` explicitly to padding×2 + Σ track sizes + gaps.
+  HUG (FIXED when variants differ in size, above), then `resize()` explicitly to padding×2 + Σ track sizes + gaps.
 - **GRID stretches variants to the row height.** Set every variant's `layoutSizingVertical =
   'HUG'` after converting, and again after any `resize()`. Rows beyond `gridRowCount` collapse to
   zero height, so the set must hug its height.
@@ -345,6 +355,8 @@ product.** Write the date, and re-test before trusting it.
 - **Notes a designer needs** at insert time go in the component set description instead. It's
   also how a note reaches a dev agent: `get_design_context` returns the description (and dev
   resource links, below), not Dev Mode annotations.
+- **An agent can't post Figma comments.** Draft the comment, with the node link, for a person to
+  paste. *(2026-10)*
 - **Dev resource links can't be written by an agent.** `use_figma` blocks them both ways, so a
   person adds them. An agent reads them via `get_design_context` on a variant, under
   **Documentation**; nested components' links don't come through. *(2026-10-06)*

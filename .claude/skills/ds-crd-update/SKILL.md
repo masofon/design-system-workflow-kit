@@ -230,7 +230,11 @@ from the wrong side of it.
 **Before every commit** — the first and every fix-up round — **run `ds-simplify-prose`** on the
 lines this session changed, and check section 6: anything this session learned that is advice
 rather than contract (an `[open]` moved out of section 1, a gotcha found while reconciling) goes
-there. Write only what the work produced.
+there. Write only what the work produced. Then run `ds-crd-write` § Phase 5's checks for values,
+undefined terms and borrowed statements over the same lines.
+
+**Wrap-up** lists anything agreed but not applied, and why (another PR, waiting on someone). An
+agreed edit that isn't listed reads as done.
 
 * **One CRD, one ticket, one branch, one PR** — unless the changes are inextricably linked, such
   as a dependency whose contract must change with this one; then they share the PR and its
@@ -276,6 +280,10 @@ covers where else the ref goes and what the tracker links by itself.
   --body-file …`) to match what's in the PR — version, open questions, files. Reviewers read the
   body, not the commits.
 * **On merge:** ticket → `verify`, then pull the integration branch.
+* **Refresh the sibling items' descriptions on merge.** Design and develop items raised before
+  the CRD existed say so ("no CRD yet"). When a PR merges that writes the CRD, or changes what
+  they point to, rewrite those descriptions to point at the merged CRD, via `ds-ticket` and
+  within its rule 1. A stale "CRD not written" sends the next person looking for nothing.
 
 ## When to use
 

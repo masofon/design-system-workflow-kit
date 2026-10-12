@@ -30,6 +30,7 @@ docs/
   design/design-foundations.md  ← your token architecture, plus general Figma know-how
   design/component-classification.md   ← your component categories
   design/accessibility.md       ← global accessibility rules (a WCAG 2.2 AA starter set)
+  design/glossary.md            ← your team's terms and the kit's, in plain language
 ```
 
 | Skill | Job |

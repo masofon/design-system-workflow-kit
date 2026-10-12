@@ -1,12 +1,13 @@
 ---
 name: ds-crd-review
-description: Review a design system CRD as a document, before or during drafting — accuracy against the token architecture, the accessibility boundary, atom-vs-consumer semantics, Figma-expressibility honesty, front matter hygiene and completeness against the template. Produces concerns-only feedback for the design team. Use when asked to review, critique, sanity-check or give feedback on a CRD. Not for writing one (ds-crd-write), editing one (ds-crd-update), or reviewing code.
+description: Review a design system CRD as a document, before or during drafting — accuracy against the token architecture, the accessibility boundary, atom-vs-consumer semantics, Figma-expressibility honesty, front matter hygiene and completeness against the template, and the Figma page's demos against the CRD once design exists. Produces concerns-only feedback for the design team. Use when asked to review, critique, sanity-check or give feedback on a CRD, or to re-review one after the author's changes. Not for writing one (ds-crd-write), editing one (ds-crd-update), or reviewing code.
 ---
 
 # Review a CRD
 
-Reviews a CRD **as a document**: factual accuracy, internal consistency, house doctrine. Your
-output is concerns only. You don't edit the CRD.
+Reviews a CRD **as a document**: factual accuracy, internal consistency, house doctrine, and,
+once design exists, whether the Figma page's demos agree with it. Your output is concerns only.
+You don't edit the CRD.
 
 ## Before reviewing
 
@@ -24,9 +25,9 @@ output is concerns only. You don't edit the CRD.
    - Sibling claims — the referenced CRDs themselves
 5. **Read config § Paths → `crd_how_to`** — it owns the conventions you are reviewing against,
    including the accessibility boundary and the ready-for-dev gate.
-6. **Read config § Paths → `design_foundations`** for lens 2.
+6. **Read config § Paths → `design_foundations`** for check 2.
 
-## Lenses
+## What to check
 
 ### 1. Front matter hygiene
 
@@ -111,8 +112,9 @@ that.
   is a finding — it belongs in section 6 under Content
 - An `I` statement restating an `F` statement is a finding — it should cite the ID; so is a `C`
   that only restates an `F`
-- A statement naming a text style, px value or token is a finding — Figma holds those (section 4's
-  pairing list excepted)
+- A statement or decision naming a text style, px value or token is a finding — Figma holds those
+  (section 4's pairing list excepted). So is a house term nobody can look up (`crd_how_to`
+  § Keeping it tight)
 - Figma-only axes and props (a Figma-only breakpoint, say) have a Properties row saying so
 - A section 6 line restating a section 1 statement without citing its ID is a finding; so is a
   When-not line that repeats Scope instead of naming the alternative. Dev-facing lines in section 6
@@ -149,6 +151,38 @@ design review held, zero `[open]` markers in section 1, every open question clos
 deferred. If a CRD's front matter implies readiness the document does not support, say so and
 name what is missing.
 
+### 10. Figma demos — once the component page exists
+
+Often where the best findings are. Load `figma:figma-use`, then read the component page
+read-only (the CRD's `figma:` link). Compare its demo frames, usage frame included, against
+section 1 and section 6:
+
+- A demo showing something a statement forbids, or a "when not to use" case presented as normal
+- A statement, state or variant no demo shows, where a demo would help someone use it
+- Usage guidance the demos contradict, or demos doing something the guidance never mentions
+- Captions that disagree with what the specimen shows
+
+A finding here names the frame or node, and says which side looks wrong: the demo or the CRD.
+
+## Follow-up rounds
+
+**Before every follow-up round, re-read the PR**: its latest commits and the whole thread. Drop a
+comment the author has already addressed, and reword one they've partly addressed so it asks only
+for what's left. A re-raised fixed comment costs the author trust in the rest.
+
+**Re-review mode**: when asked to re-review, or when the PR already has your earlier review:
+
+1. **Check every earlier comment against the current CRD.** Mark each **implemented**,
+   **partly** (say what's left), **not**, or **disputed** (the author replied with a reason;
+   quote it, and weigh it rather than repeating the comment).
+2. **Run the Figma page checks** if the page exists: the clip sweep (`ds-design-component`
+   § 7), detached copies (a frame or group standing in for an instance of the component), and
+   bindings against the CRD's wording (a statement about an error border has an error-family
+   binding, not a neutral one).
+3. **Then § What to check**, on what changed since the last round only.
+
+Report the earlier comments' status first, then new concerns.
+
 ## Output contract (strict)
 
 - Lead with a one-line overall verdict
@@ -158,6 +192,8 @@ name what is missing.
 - **Respect deliberate decisions.** Parked items, accepted gaps and "TBD in Design" markers are
   not concerns — never re-raise them
 - When a claim cannot be verified against a source, mark it **"verify"**, not "wrong"
+- **Figma findings are drafted for a person to paste.** An agent can't post Figma comments
+  (`design_foundations` § Working in Figma via MCP), so give the node link and the comment text
 
 ## Cross-domain
 
@@ -177,3 +213,4 @@ name what is missing.
 - [ ] An older-format CRD was reviewed against its own shape
 - [ ] No concern about a section or feature the config switches off
 - [ ] Output is concerns-only, grouped, list-form, verdict first
+- [ ] On a follow-up round: the PR re-read, nothing already addressed raised again

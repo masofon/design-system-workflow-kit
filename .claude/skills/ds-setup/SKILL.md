@@ -29,6 +29,10 @@ run install. A repo with the kit's skills in `.claude/skills/` and no `SETUP.md`
   GitHub Action, a branch, a PR. Reading never does.
 - **Sign-in that needs a browser or a prompt is the person's.** Hand it over as
   `! <command>`, in short commands rather than one long line, then check it worked.
+- **Catch the team's words.** Whenever the person, a file or a token name uses a house term a
+  newcomer wouldn't know (a product name, a nickname for a component, a token family), propose a
+  one-line meaning and add it to config § Paths → `glossary`, Part 1, on a yes. Batch them at the
+  end of each phase.
 - **One phase at a time.** Finish it, report in a few lines, carry on.
 - **Repo writes** follow the config once it's filled: a branch and a PR into
   `integration_branch` if `direct_push` is No.
@@ -55,7 +59,7 @@ keeps things.
    | `.claude/skills/ds-*/` | `.claude/skills/` at the repo root | No. Claude Code looks for skills there |
    | `.claude/design-system.config.md` | `.claude/` at the repo root | No. Every skill looks for it there |
    | `docs/crd/` (template, how-to, README, examples) | Beside the team's other docs, e.g. `docs/design-system/crd/` | Yes. Config § Paths records where |
-   | `docs/design/` (foundations, classification, accessibility) | Beside the CRDs, e.g. `docs/design-system/` | Yes. Config § Paths and § Accessibility → `rules` record where |
+   | `docs/design/` (foundations, classification, accessibility, glossary) | Beside the CRDs, e.g. `docs/design-system/` | Yes. Config § Paths and § Accessibility → `rules` record where |
    | `CLAUDE.kit.md` | Merged into the root `CLAUDE.md` in phase 5, never copied as is | |
    | `README.md`, `SETUP.md` | Not installed: they're for the person installing | |
 
@@ -198,6 +202,7 @@ Read-only. Report **block** findings first, then **warn**, then what passed in o
 - Adapter sections still marked *(verify)*.
 - Config values left at a kit default that the sources contradict.
 - Example CRDs still present after the team has written its own.
+- Glossary Part 1 still holds only the Acme example.
 
 **Not applicable** (one line, not a finding): features the config switches off, e.g. stable
 components or brand validation.

@@ -368,6 +368,10 @@ written into the CRD. They live in Figma and the tokens.
 - **Whole-page style sweep**: every text node on the page has a text style and a token fill,
   including labels you cloned or moved, not just nodes you created. Text content is in config
   § Writing → `text_case`, with casing applied by the style. No glyph icons (§ 4).
+- **Clip sweep**: every frame on the page, doc frames and variants included, has clip content
+  off, unless the clip is a deliberate effect (`design_foundations` § Building layouts) **and**
+  annotated with why. An unannotated clip is a finding even when it looks right: it hides
+  overflow rather than fixing it, and the next person can't tell it was meant.
 - **No forbidden bindings**: no direct lower-tier bindings beyond those `design_foundations`
   § Component tokens allows, no raw hex or detached fills, no variables or text styles from a
   previous system, no deprecated tokens (config § Tokens → `deprecated_name`; rebind to the

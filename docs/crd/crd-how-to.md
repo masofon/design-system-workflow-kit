@@ -319,7 +319,8 @@ Every line of a CRD is loaded into an agent's context each time the component is
 * **A rejection lives in Ruled out only.** A decision names the choice made & does not re-argue the options it beat.
 * **A decision never restates a statement.** Cite the ID & add only the why; if the statement already carries its why, there is no entry.
 * **No process.** Build steps, publish state, the date something changed in Figma, draft history & tooling notes belong in the context card, the handover or the commit.
-* **No values in statements.** No text style names, px values or token names — Figma holds them. The statement says what the part does, & the component's Figma set is the reference. Section 4's pairing list, where used, is the exception: token names by design.
+* **No values in statements or decisions.** No text style names, px values or token names — Figma holds them. The statement says what the part does, & the component's Figma set is the reference. Section 4's pairing list, where used, is the exception: token names by design.
+* **No undefined house terms.** A word the reader can't look up (anatomy, this doc, the glossary at config § Paths → `glossary`) is defined where it first appears, or replaced with plain words.
 * **Name doctrine, do not explain it.** "Atom versus consumer", not a paragraph explaining it.
 * **The deletion test**, for every line without an ID: delete it — would an agent build the component wrong? If not, it goes.
 * **Properties table descriptions stay empty** where Figma says it all.

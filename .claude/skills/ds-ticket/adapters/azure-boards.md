@@ -178,9 +178,8 @@ ones, and keep `<`, `>` and `&` out of backticks.
   you have redone it by hand, because an `unlink` landing late silently undoes the link you made
   after it. *(2026-09)*
 - **Claude Code's Auto mode can block writes** as an *External System Write*. It's
-  intermittent, and not a permission or auth fault, so retrying or working around it is wrong.
-  Hand the change to the person instead (field and value, or stage, **always with the item
-  URL**), or suggest a session not in Auto mode. *(2026-09)*
+  intermittent, and not a permission or auth fault. Follow `ds-ticket`'s classifier rule
+  (smaller pieces once, then hand over), or suggest a session not in Auto mode. *(2026-09)*
 
 ## 10. Gotchas
 

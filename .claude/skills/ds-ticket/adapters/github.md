@@ -190,8 +190,8 @@ GitHub Flavoured Markdown, stored as written, with no escaping surprises. Task l
   creates, and on `HTTP 403 … secondary rate limit` wait and retry the failed call only.
 - **A failed `gh` call is explicit**: it exits non-zero with a message, so a create that errored
   normally hasn't written. Still list by title before retrying a create that timed out.
-- **Claude Code's Auto mode can block external writes.** Hand the change to the person with the
-  exact `gh` command and the issue URL, rather than working around it.
+- **Claude Code's Auto mode can block external writes.** Follow `ds-ticket`'s classifier rule:
+  smaller pieces once, then hand the person the exact `gh` command and the issue URL.
 
 ## 10. Gotchas
 

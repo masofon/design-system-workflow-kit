@@ -17,6 +17,12 @@ This skill holds the workflow's ticket conventions. The tracker's details come f
 **Tracker unreachable?** Say so and point at the adapter's setup section. Don't fall back to
 raw API calls, and never ask for a personal access token in chat.
 
+**A tracker write blocked by Claude Code's permission classifier?** (Not a tracker error: the
+client refused before the call went out.) Retry once in smaller pieces: one item per call
+instead of a batch, or one field per update. If that's blocked too, stop and hand the change to
+the person: the item URL, and the field and value or the stage. Don't work around the block any
+other way. The adapter's § Failure modes covers the tracker's own errors.
+
 **No adapter for the configured tracker?** Say so, and offer to draft one from
 `adapters/README.md` (the contract every adapter fills) and the existing adapters. Don't
 improvise tracker calls without one.
