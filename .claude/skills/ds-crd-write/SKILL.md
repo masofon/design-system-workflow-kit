@@ -247,8 +247,9 @@ Leave later sections as empty headings. Empty with an honest status flag beats i
 
 ## Phase 5 — Verify, then hand over
 
-Run `ds-simplify-prose` on what you wrote — and again before every later commit, including
-fix-up rounds after review — then check:
+Run `ds-simplify-prose` on wording before you read it back for approval, so what's approved is
+what gets committed. Run it again on what you wrote before every commit, including fix-up rounds
+after review, then check:
 
 - [ ] Every statement atomic, testable, and using only anatomy nouns
 - [ ] **No values in statements or decisions** (`crd_how_to` § Keeping it tight). Read each one

@@ -47,6 +47,8 @@ is Yes). Follow `crd_how_to` § Amending a shipped component: a transient block 
 `# CRD: <Name>` title and its horizontal rule, immediately above `# 1 · Requirements`;
 statements as `[open]`, reusing IDs where they replace and new IDs where they add; status flipped
 to `in_progress`. The block is deleted when design closes it; it isn't a permanent record.
+**Only for built components** (`lifecycle: built` or `stable`). Before build, edit a changed
+statement in place, under the usual renumbering rule (§ Cutting, merging or moving a statement).
 
 **Conversion** — an older-format CRD, or a spec from another tool, reaching the substance gate.
 Map its content onto `crd_template` section by section, using `crd_how_to` § Section by section
@@ -122,8 +124,9 @@ Scope discipline during design, from `crd_how_to`:
 * Statements the amendment names get built.
 * Adjustments forced by the change (padding, optical corrections) are made and reported in chat,
   never written into the CRD — they live in Figma and the tokens.
-* If the change makes an existing statement false, correct it with a decision entry **and say
-  so**. A "small" amendment invalidating several statements probably wanted to be a bigger one.
+* If the change makes an existing statement false, correct the statement **and say so**. Add a
+  decision entry only if the statement doesn't already carry its why (`crd_how_to` § Keeping it
+  tight); don't add a Ruled out entry for the old wording. A "small" amendment invalidating several statements probably wanted to be a bigger one.
 * Anything neither named nor forced is a future amendment, not this session's work.
 
 Uncertainties go one of two ways, never both: a provisional statement gets an inline `[open]`
@@ -226,6 +229,10 @@ from the wrong side of it.
 **Never store ready-for-dev.** It is computed — `crd_how_to` § The ready-for-dev gate.
 
 ## 5. Ship — branch, PR, ticket
+
+**Run `ds-simplify-prose` on proposed wording before showing it for approval**, so what the
+person approves is what gets committed. Simplify never rewords approved lines at commit; it flags
+them instead.
 
 **Before every commit** — the first and every fix-up round — **run `ds-simplify-prose`** on the
 lines this session changed, and check section 6: anything this session learned that is advice

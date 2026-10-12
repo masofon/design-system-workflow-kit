@@ -16,6 +16,9 @@ the work is touched, so each line has to earn its place.
   edited. Diff against the start of the session, or against config § Repo →
   `integration_branch`. Don't rework untouched parts of the document; drift there is a
   separate change.
+- **Before approval, not after.** The owning skill runs this on proposed wording before the
+  person approves it. Lines the person has already approved are not reworded at commit: flag
+  anything you'd change, and let them decide.
 - **Prose, not substance.** You may shorten, merge, reword and delete lines that repeat or add
   nothing. You may not change what a statement requires, add or remove a requirement, renumber
   IDs, or reverse a decision. If fixing a line would change its meaning, **flag it instead**.
