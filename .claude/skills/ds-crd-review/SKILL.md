@@ -76,13 +76,14 @@ Check claims against `design_foundations`, not against memory or another system'
 that.
 
 - **A global standard restated anywhere is a finding** — in `B` or `S` statements as well as `A`
-  (Tab order, reduced motion, RTL mirroring, focus indicators)
+  (Tab order, respecting reduced motion, RTL mirroring, focus indicators). What this
+  component's motion does under reduced motion is component-specific, not a restatement
 - **Do not raise a missing global standard as a finding.** Contrast ratios, keyboard
   conventions, semantic HTML, RTL, reduced motion and touch targets are owned by the general
   accessibility rules (config § Accessibility → `rules`), and CRDs deliberately omit them
 - **Do raise a missing component-specific fact**: the ARIA attribute and value this component
   sets, what it announces and how politely, focus order, focus management on state change,
-  which parts are decorative
+  which parts are decorative, and what its motion does under reduced motion
 - **A content swap with no named live-region owner is a finding** — usually the consumer's
   container, present before the change
 - **An `A` statement that is only a principle is a finding.** "Must meet WCAG AA" is true of
@@ -95,6 +96,8 @@ that.
 
 - Behaviours Figma cannot express — viewport-relative caps, grow-then-scroll, container-derived
   constraints — must be marked code-only, with the Figma approximation stated
+- Motion is described in words (what moves, the trigger, reduced motion), with a Figma
+  prototype treated as a preview only. Any duration or easing in the CRD is a finding
 
 ### 6. Completeness against the template
 

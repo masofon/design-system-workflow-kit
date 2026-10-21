@@ -188,6 +188,8 @@ What goes in each section, & who consumes it. The template is a bare skeleton; t
 
 **Behaviour (B)** — interactions, keyboard behaviour, responsive behaviour, animation & motion. Figma cannot express this, so be complete here rather than thorough about visual description.
 
+**Motion is described in words:** what moves, what triggers it, & what happens under reduced motion. A Figma motion prototype is a rough preview, never the spec. No durations or easings: they are values (§ Keeping it tight), & live in Figma or motion tokens.
+
 **Content (C)** — only copy the component owns or enforces: fixed or translated strings, truncation at N characters, casing through the text style. If a build test cannot fail on it, it is not a C statement. A C that only restates an F ("Heading required" beside F1) is redundant — the F holds it. Advice to the consumer on what to write goes to section 6, under Content.
 
 **Accessibility (A)** — component-specific only; see § What accessibility belongs in a CRD. Include the ARIA attributes & values this component sets, what it announces & when, its focus order & focus management, & anything unusual to it. Do not restate global standards.
@@ -196,7 +198,7 @@ What goes in each section, & who consumes it. The template is a bare skeleton; t
 
 **Ruled out** — rejected design space (see above).
 
-**Open questions** — owner, By & status per row. Small uncertainties stay inline as `[open]` markers instead.
+**Open questions** — owner, By & status per row. Small uncertainties stay inline as `[open]` markers instead. A question waiting on another CRD keeps its row, with that CRD named as the owner, so it doesn't vanish while the other one settles.
 
 **Notes** — relevant context that is not a requirement: brand variability expectations, constraints from outside the component. Leave empty rather than pasting boilerplate.
 
@@ -204,7 +206,7 @@ What goes in each section, & who consumes it. The template is a bare skeleton; t
 
 **3 · Implementation** — implementation decisions before you build, dev notes & deviations during (see above).
 
-**4 · Brand validation** *(only if config § CRDs → `brand_validation` is Yes)* — token pairings needing contrast validation, split by when they can be checked: at brand creation (opaque fills) or at placement (transparent fills needing parent surface context). Check the token's value, not its name: any alpha makes it transparent. Plus exemptions & anything the validation logic needs. Consumed by brand setup tooling, not the component build.
+**4 · Brand validation** *(only if config § CRDs → `brand_validation` is Yes)* — a token-pattern line only when the component has its own component tokens, then token pairings needing contrast validation, split by when they can be checked: at brand creation (opaque fills) or at placement (transparent fills needing parent surface context). Check the token's value, not its name: any alpha makes it transparent. Plus exemptions & anything the validation logic needs. Consumed by brand setup tooling, not the component build.
 
 **5 · CMS behaviour** *(only if config § CRDs → `cms_behaviour` is Yes)* — what a self-serve user gets when they add this as a block: layout constraints, the exposed subset of properties, & guardrails protecting them from broken or inaccessible configurations. Consumed by the CMS block work & the runtime agent, not the component build.
 
@@ -218,7 +220,7 @@ Section 6 never restates section 1. A line that repeats a statement cites its ID
 
 An accessibility statement earns its place only if it is true of **this component and no other**. Everything else already has a home: the general accessibility rules your build & review apply on every component (config § Accessibility → `standard`, plus `rules`).
 
-**The test.** Would this sentence still be true pasted into a different component's CRD? If yes, it is not yours. If no, keep it & give it an `A` ID. It applies to every statement, not just the Accessibility subsection: Tab order, reduced motion & RTL mirroring often turn up as B or S statements.
+**The test.** Would this sentence still be true pasted into a different component's CRD? If yes, it is not yours. If no, keep it & give it an `A` ID. It applies to every statement, not just the Accessibility subsection: Tab order, reduced motion & RTL mirroring often turn up as B or S statements. Reduced motion is half & half: that it's respected is global, but what *this* component's motion does under it is yours.
 
 **Never write these.** All are covered by the general rules:
 
@@ -230,7 +232,7 @@ An accessibility statement earns its place only if it is true of **this componen
 * Focus indicators — visibility, 2px, 3:1, `:focus-visible` over `:focus`
 * Screen reader basics — alt text, label association, announcing dynamic content
 * RTL — logical properties, `:dir(rtl)` flips, directional icons
-* Reduced motion — `prefers-reduced-motion`
+* Reduced motion — that `prefers-reduced-motion` is respected (what this component does under it is yours: see below)
 * Touch targets — the 44x44 minimum & the pseudo-element technique
 * Modal behaviour — focus trap, focus return, `aria-hidden` on page content
 * Loading states — `aria-busy` & `aria-live`
@@ -245,6 +247,7 @@ An accessibility statement earns its place only if it is true of **this componen
 * **Focus order within the component**, where it is not simply DOM order, or where a part is deliberately not focusable. Breadcrumb's current page is skipped, & that is a requirement rather than an accident
 * **Focus management on state change** — where focus goes after a dismiss, delete, expand, collapse, close or async update. General rules cover the modal case only; every other component's answer is a design decision
 * Keyboard behaviour beyond platform convention
+* What this component's motion does under reduced motion — stops, becomes a fade, or jumps straight to the end state
 * **Who owns the live region** when this component's content swaps in or out — usually the consumer's container, present before the change. A region inserted along with its content is not reliably announced
 * Accessibility-driven design decisions — they start as an `A` statement & end up in Design decisions
 

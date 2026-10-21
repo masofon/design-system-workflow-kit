@@ -154,8 +154,10 @@ Move on when a topic is settled; circle back rather than block.
    what was considered and rejected — Ruled out material nobody volunteers.
 4. **States and behaviour.** Walk the component through its life: resting, hover, focus,
    pressed, disabled, loading, error. Then the edges — longest label, smallest container, slowest
-   network. The accessibility boundary (step 6) applies here too: Tab order, reduced motion, RTL
-   mirroring and focus indicators are global, whichever section they'd land in.
+   network. Motion in words: what moves, what triggers it, what happens under reduced motion;
+   never a duration or easing. The accessibility boundary (step 6) applies here too: Tab order,
+   respecting reduced motion, RTL mirroring and focus indicators are global, whichever section
+   they'd land in.
 5. **Content — two destinations.** Copy the component owns or enforces (fixed or translated
    strings, truncation, casing through the text style) becomes ID'd `C` statements, because a
    build test can fail on them. What the consumer should write (voice, length, must and must not)
@@ -228,6 +230,10 @@ the template verbatim — don't reorder, rename, merge or invent them.
 - `related_crds` — `dependency` for anatomy children and parents that enforce on this component,
   `precedent` for structurally similar components. Only what an agent must load; loose
   association belongs in Integration prose
+
+**Citing another CRD's IDs:** if that CRD has an open PR renumbering its statements (check with
+your repo host's CLI), cite the file without IDs. An ID cited now points at the wrong statement
+once that PR merges.
 
 **Reciprocal updates, same commit.** Each dependency adds this component to that CRD's "Used
 in"; each precedent adds it to that CRD's precedent list. **On the other CRD, update

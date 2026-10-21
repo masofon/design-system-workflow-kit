@@ -32,6 +32,8 @@ Keep them, tighten them, or add your own: a changed rule here applies to every c
   focus until it closes.
 - **Focus is always visible**: a clear indicator, at least 3:1 against its surroundings, never
   removed without a replacement. Focus is never hidden behind sticky headers or overlays.
+- **Focus is never only a colour change on a 1px border** (WCAG 1.4.1). A field's focus border
+  is at least 2px, drawn inside the field so the layout doesn't shift.
 - **Focus moves deliberately**: into a dialog when it opens, back to its trigger when it closes,
   and never jumps on its own when content updates.
 

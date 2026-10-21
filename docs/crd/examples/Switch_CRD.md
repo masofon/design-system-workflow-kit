@@ -98,7 +98,7 @@ Both parts are always present. The Switch has no optional parts.
 * B4: The Switch does not change value on hover or focus alone
 * B5: disabled prevents the value changing by pointer and by keyboard
 * B6: The handle animates between its off and on positions rather than jumping
-* [open] B7: Animation duration and easing — to be set in design
+* B7: Under reduced motion the handle moves to its new position without animating
 * B8: Under RTL the Switch mirrors, so the reading-start and reading-end edges swap and the
   handle travels in the opposite direction
 

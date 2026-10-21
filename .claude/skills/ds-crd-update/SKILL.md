@@ -85,7 +85,8 @@ When conversion goes ahead:
 * Cross-component content — token wiring, global accessibility standards, naming conventions —
   doesn't belong in a CRD. Strip it rather than carrying it across.
 * **Never drop an open question silently.** Carry every one across. If an amendment subsumes
-  one, the amendment says which and why. A question that disappears looks answered.
+  one, the amendment says which and why. One waiting on another CRD keeps its row, with that
+  CRD as owner (`crd_how_to` § Section by section). A question that disappears looks answered.
 * **Accessibility: nothing is deleted on conversion.** The boundary is owned by `crd_how_to`
   § What accessibility belongs in a CRD — read it, don't re-derive it. Component-specific
   statements get `A` IDs; everything else drops into the labelled "carried from the previous
@@ -260,6 +261,7 @@ Every change goes through a pull request unless config § Repo → `direct_push`
 git -C <repo> checkout <integration> && git -C <repo> pull --ff-only
 git -C <repo> checkout -b docs/<name>-crd-<change>
 # edit the CRD
+git -C <repo> branch --show-current         # its own step: must be this CRD's branch
 git -C <repo> add <crd_dir>/<Name>_CRD.md   # CRD file(s) ONLY
 git -C <repo> commit -m "docs(crd): …"       # message format per config § Repo → commit_format
 git -C <repo> push -u origin docs/<name>-crd-<change>

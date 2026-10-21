@@ -112,7 +112,8 @@ status key. -->
 
 ## Contrast pairings
 
-**Token pattern:** <!-- the component token pattern from design-foundations.md -->
+**Token pattern:** <!-- the component token pattern from design-foundations.md. Only if the
+component has its own component tokens; otherwise delete this line. -->
 
 **Validated at brand creation:**
 
