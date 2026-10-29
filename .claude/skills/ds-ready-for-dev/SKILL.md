@@ -62,8 +62,8 @@ and section 1–3 Gaps are block; Housekeeping is warn. On top of the review:
 | No § 1 statement contradicts the library set — variant axes, props, Properties table rows | `crd_how_to` § When Figma & the CRD disagree |
 | Every design decision made in Figma is written back — nothing only in chat, a context card or an annotation | `ds-design-component` § 6 |
 | ID numbering: no gaps before build; retired, never renumbered, after | `crd_how_to` § The requirements contract |
-| `version`, `last_updated`, `lifecycle` right | `crd_how_to` § Versioning, `ds-crd-update` § 4 |
-| `related_crds` reciprocal, found by front matter | `ds-crd-update` § 4 |
+| `version`, `last_updated`, `lifecycle` right. Mechanical values that are merely behind (`lifecycle`, `status` flags, `last_updated`) are a **warn**: closure updates them | `crd_how_to` § Versioning, `ds-crd-update` § 4 |
+| **Warn, not block:** `related_crds` reciprocal, found by front matter. Only for related CRDs that are `active`; the rest catch up when they're next touched | `ds-crd-update` § 4 |
 
 ### 1.3 Amendment only — block
 
@@ -91,11 +91,13 @@ Read-only `use_figma` passes on the page and set. Check against:
 | Page name and symbols, placement, canvas | `ds-design-component` § 1, config § Figma → Library conventions |
 | Context card — metadata only, header links, Status matches `status:`, changelog entry for this change | `ds-design-component` § 1 |
 | Component description — on the set only, purpose, demo-tile note, CRD link, nothing else | `ds-design-component` § 1 |
-| Dev resource link — `get_design_context` on one variant lists the CRD's repo URL under **Documentation**. Missing or wrong: report the exact URL for the person to add; you can't add it | `ds-design-component` § 1 |
+| Dev resource link — `get_design_context` on one variant lists the CRD's repo URL under **Documentation**. Check nested parts' sets too: people see them in Dev Mode through the parent, and a stale nested link is a warn. You can't write these links, so report per set: the node link, the URL to remove, the URL to add, and that it goes on the set, not a variant. Check again after the person fixes them | `ds-design-component` § 1 |
 | Figma-only axes and props; mode-dependent literals right at every mode | `ds-design-component` § 3 |
 | Code-only props | `ds-design-component` § 4 |
 | Dev Mode annotations for what Figma can't express, each applied once | `ds-design-component` § 8 |
 | Every binding resolves across every mode axis (`design_foundations` § Mode axes); whole-page text style and token fill sweep | `ds-design-component` § 7 |
+| No binding to a deprecated variable collection, and no lower-tier token bound straight onto a component | `ds-design-component` § 7 |
+| Motion: if the component moves, one Dev Mode annotation on the set carries the build values | `ds-design-component` § 8 |
 | Slot and prop-ref parity across variants; default variant top-left, option order, set layout | `ds-design-component` § 3 (Laying out the set) and § 4 |
 | Page frames and layout. If config § Figma → `page_layout` is `team`: matches `reference_page` and the Library conventions keys. If `kit`: config `doc_frames` and the kit guidance | `documentation-frames.md` beside `ds-design-component` |
 
@@ -113,7 +115,9 @@ page is eligible and leave it to them.
   (`ds-ticket` § Spinning up an amendment's items).
 - **Every PR merged.** Find each work item's PRs by its ticket ref (config § Tracker →
   `ticket_ref`) with your repo host's CLI (`gh pr list --state all --search …` on GitHub), and
-  confirm each is merged. An open PR is a block; so is a design or CRD work item with none.
+  confirm each is merged. An open PR is a block; so is a CRD work item with none. **A design work
+  item needs no PR**: design can be Figma-only, and the gate's `design_specs: complete` covers it.
+  A work item not linked to its PR is housekeeping (warn).
   **Except a CRD PR held open for this run's own edits** (a status flag, a fix found while
   checking): not a block. Say so in the report; it merges straight after the run, before
   closure step 1 moves its item. Each
@@ -151,6 +155,9 @@ Only with zero blocks, every human check answered yes, and the person saying go.
 someone else owns needs the person to name it — the closure plan is how they do. Every move
 goes through `ds-ticket`.
 
+0. **Mechanical front matter** the check found behind (`lifecycle`, `status` flags,
+   `last_updated`): update it via `ds-crd-update`, in the run's own CRD PR, and merge that
+   first.
 1. **Work items to stage `verify`** — CRD, Design, and Fold for an amendment. **One at a time,
    in sequence: confirm its PRs merged, then move it, then the next.** Never move ahead of the
    merge, and never in parallel, so no ticket runs ahead of its PR. Skip an item already at or

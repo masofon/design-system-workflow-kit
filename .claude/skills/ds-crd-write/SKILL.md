@@ -53,6 +53,8 @@ converting is its job.
 
 **Filling a later section** — the CRD exists in the template's shape and design or build has
 since happened. Skip to the phase that owns that section; the interview still runs, scoped to it.
+Check its front matter first and offer the fix straight away: a `lifecycle` or `status` flag that
+disagrees with where the work is misleads everyone downstream.
 
 | Section | Filled when | Source |
 |---|---|---|

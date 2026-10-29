@@ -1,15 +1,16 @@
 # Documentation frames
 
-Reference for `ds-design-component` § 1. A component page carries up to four top-level frames, left
+Reference for `ds-design-component` § 1. A component page carries up to five top-level frames, left
 to right, config § Figma → `frame_spacing` apart, in the order config `doc_frames` gives:
-typically **component → anatomy → usage → modes**. They're split because components get big, and
+typically **component → anatomy → usage → modes → motion**. They're split because components get big, and
 each frame answers one question.
 
 **Every name, size and colour here comes from config § Figma → Library conventions** and the
 team's own design system. This file sets the structure; the config and the DS set the look.
 
 **Which frames a component needs is a judgement.** Anatomy mostly for multi-part components;
-modes only where the tokens really vary, since a mode that renders identically teaches nothing.
+modes only where the tokens really vary, since a mode that renders identically teaches nothing;
+motion only where something moves.
 
 ## Kit layout or team layout
 
@@ -161,9 +162,23 @@ The header, then one doc row per mode axis that matters for this component
   shown.").
 - **Fonts**: other brands may use unloaded fonts (`design_foundations` § Working in Figma via
   MCP, Text).
+- **Two axes at once**: with a breakpoint axis and one other axis, use a matrix. Rows are the
+  other axis, columns are the breakpoints. It reads better than one row per combination.
 - **Verify with `resolveForConsumer`.** Screenshots of different modes can look alike.
 
-## Gotchas for all four
+## Motion frame
+
+Only when the component moves. The header, then one doc row per movement, in the CRD's order.
+
+- **Specimen**: the start and end states side by side, live instances, with the trigger in the
+  title ("Opens on click").
+- **Caption**: what moves and how, in plain words, and what happens under reduced motion. The CRD
+  reference in the eyebrow.
+- **Values**: not in the caption. They're in the one Dev Mode annotation on the set
+  (`SKILL.md` § 8).
+- A Figma motion prototype can sit beside it as a preview. It's never the spec.
+
+## Gotchas for every frame
 
 - New frames ship with a white fill and clipping on. Strip both at creation (`SKILL.md` § 5).
 - `resize()` turns hug into fixed: set hug again after resizing. Instances inside wrappers need

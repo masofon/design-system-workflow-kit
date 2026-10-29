@@ -11,6 +11,9 @@ You don't edit the CRD.
 
 ## Before reviewing
 
+**No repo host CLI or no Figma access?** Do a document-only review: skip the PR re-read and the
+Figma checks, and say so in the verdict line, so nobody takes it for a full review.
+
 1. **Read the whole CRD**, front matter included.
 2. **Check the format.** `format: 2` in front matter means the current template. Absent means
    an older shape. **Review an older CRD against its own shape.** Absent template sections aren't

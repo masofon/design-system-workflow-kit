@@ -29,6 +29,11 @@ skill doesn't spell out, read the relevant reference rather than working from me
 
 Don't restate their content in a CRD, a commit message or this skill. One home per fact.
 
+**Check the front matter first, and offer the fix straight away.** You know which component
+you're on: if `lifecycle` or a `status` flag disagrees with where the work really is (designing
+it means `active`; a finished design review means `design_specs: complete`), say so before
+anything else.
+
 **Format detection**: `format: 2` in front matter means the current template; absent means an
 older shape. Both are readable — interpret prose, don't parse. Always **write** the template's
 shape.
@@ -266,8 +271,11 @@ git -C <repo> push -u origin docs/<name>-crd-<change>
 Then raise the PR with the ticket ref in the description. `ds-ticket` § Linking an item to a PR
 covers where else the ref goes and what the tracker links by itself.
 
-* **Follow config § Repo → `commit_format`** and the repo's commit hooks. Never bypass a hook with
-  `--no-verify`; if one fails, fix the message.
+* **Follow config § Repo → `commit_format`** and the repo's commit hooks. **Read the hook config
+  before your first commit** (e.g. a commitlint or husky setup): the format it enforces wins.
+  Never bypass a hook with `--no-verify`; if one fails, fix the message.
+* **Stacked PRs.** If this PR sits on another CRD PR that renumbers IDs, mirror the renumber
+  here: merge the base branch in, and on a conflict keep the fold's deletion.
 * **Stage CRD files explicitly.** Never `git add -A`.
 * A change spanning a CRD **and** anything else can share one PR, but say so in the description —
   a reviewer of a CRD PR won't expect a skill change inside it.

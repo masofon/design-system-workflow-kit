@@ -310,6 +310,10 @@ product.** Write the date, and re-test before trusting it.
   doesn't clear the override flag and can bake in different behaviour (an auto gap becomes a
   literal `0`). Set what renders correctly, then hand the person the one-click fix: right-click
   the layer → **Reset changes**. *(2026-08-28)*
+- **`resetOverrides()` misses some overrides**: values set with `setProperties`, and content
+  inside a nested instance's own slot. Set those back to their defaults explicitly. *(2026-10)*
+- **Renaming a main component doesn't rename its instances' layers**, or nested instances' names.
+  They keep the old name until a script renames them. *(2026-10)*
 
 ### Cloning and swapping
 
@@ -355,6 +359,8 @@ product.** Write the date, and re-test before trusting it.
 - **Notes a designer needs** at insert time go in the component set description instead. It's
   also how a note reaches a dev agent: `get_design_context` returns the description (and dev
   resource links, below), not Dev Mode annotations.
+- **A keyframe's easing controls the segment going *into* it**, so the first keyframe's easing is
+  never used. Put motion values in one annotation on the set, not on each keyframe. *(2026-10)*
 - **An agent can't post Figma comments.** Draft the comment, with the node link, for a person to
   paste. *(2026-10)*
 - **Dev resource links can't be written by an agent.** `use_figma` blocks them both ways, so a

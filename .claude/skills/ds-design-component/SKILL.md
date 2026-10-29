@@ -127,6 +127,9 @@ never construction.**
   prop conventions, bindings. Match, don't invent.
 - **Changing an existing set? Audit it first.** A read-only pass, then a report of what you'd
   change, before any edit. The person sees the blast radius before it happens.
+- **Check this component's CRD front matter first, and offer the fix straight away** (via
+  `ds-crd-update`): designing it means `lifecycle` should be `active`; a finished design review
+  means `design_specs: complete`. Stale front matter misleads every other skill and person.
 - **Set `lifecycle: active` when a designer starts core work**, via `ds-crd-update`, never by
   hand. At the start, not the end: `active` is how anyone else can tell it's being worked on now.
 
@@ -149,7 +152,8 @@ gaps. The rules below on naming, symbols, placement and descriptions apply eithe
   `ready_for_dev_awarder` awards it. Replace any older text suffixes (`- WIP`, `- Deprecated`)
   with the matching symbol when you next touch a page.
 - **Leave `protected_pages` alone.**
-- **Canvas background**: `canvas_background`, if set.
+- **Canvas background**: `canvas_background`, if set. Check it on every page you touch, not only
+  at setup: pages drift.
 - **Context card** (`context_card`) **carries page metadata only.** Anything said elsewhere
   (variants, usage, accessibility, integration) isn't repeated on it; variants are described
   beside the set (`documentation-frames.md`). Copy the card from `reference_page`.
@@ -167,6 +171,8 @@ gaps. The rules below on naming, symbols, placement and descriptions apply eithe
 - **Dev resource link**: the CRD's URL on the component set. It surfaces in Dev Mode for people,
   and for a dev agent via `get_design_context` on a variant. **An agent can't add one**
   (`design_foundations` § Working in Figma via MCP): report the exact URL for the person to add.
+  **Always the integration-branch URL**, even before the CRD's PR merges: a PR-branch URL breaks
+  when the branch is deleted.
 - **Component description is on the set only.** Variants carry none, or `get_design_context` hands
   dev both and the variant copy goes stale first. **Three things at most**: a one-line purpose, a
   note that any backdrop tiles are demo-only, and the CRD link. It reaches the dev agent in full,
@@ -303,7 +309,8 @@ The Figma API facts behind these are `design_foundations` § Working in Figma vi
 - **Slots are scriptable**: `component.createSlot()` (verified 2026-08-27).
   1. Build the variant with a temporary holder FRAME containing the default content.
   2. `const slot = comp.createSlot(comp.children[0])`. This APPENDS an empty SLOT after that
-     node; it doesn't convert it.
+     node; it doesn't convert it. It always lands at the component's top level: to nest it,
+     move it with `insertChild`, and it stays a slot.
   3. `slot.name = 'items'` (the layer name becomes the prop name), then
      `comp.editComponentProperty(slotKey, { name, preferredValues, slotSettings })`.
   4. The new SLOT has `layoutMode:'NONE'`. Set auto-layout, sizing and gap yourself, move the
@@ -322,6 +329,9 @@ The Figma API facts behind these are `design_foundations` § Working in Figma vi
   use build order: empty the slot in every variant, create and fill all instances, then re-add
   the placeholders. Scripting only; the UI is unaffected.
 - Rows dropped into a slot arrive `FILL/FIXED`. Set `layoutSizingVertical='HUG'`.
+- **Preferred values that cover only part of what the CRD allows** (the rest aren't in the
+  library yet): record which are missing in the CRD's Notes via `ds-crd-update`. When you design
+  one of those missing components, search dependent CRDs' Notes for it and add it to their slots.
 - Never write "a button". Name the component and its permitted variants.
 
 ## 5. Composition
@@ -375,7 +385,9 @@ written into the CRD. They live in Figma and the tokens.
 - **No forbidden bindings**: no direct lower-tier bindings beyond those `design_foundations`
   § Component tokens allows, no raw hex or detached fills, no variables or text styles from a
   previous system, no deprecated tokens (config § Tokens → `deprecated_name`; rebind to the
-  replacement).
+  replacement). **Sweep by collection, not just by name**: list the variable collection of every
+  binding on the page; any deprecated or retired collection is a finding even when the token
+  name looks current.
 - **After creating or restructuring variants, rerun the raw-paint sweep over every variant you
   touched**, descending into consumed instances you swapped or restructured (their resolved
   paints, not just `mainComponent`). Targeted binding checks miss nodes you didn't target, and
@@ -393,6 +405,9 @@ written into the CRD. They live in Figma and the tokens.
 - **Dev Mode annotations** for the values and rules code needs. **Annotate a repeated structure
   once**, on the first or default variant, never on every variant; explain it in context on the
   page (a short note beside the set) instead.
+- **Motion**: if the component moves, one Dev Mode annotation on the set carries the build values
+  (what moves, duration, easing, the reduced-motion behaviour). The CRD describes the motion in
+  words only; the values live here. Show it in the motion frame (`documentation-frames.md`).
 - Update the CRD via `ds-crd-update`. Props tables must match the built component.
 - Remind config § Roles → `publisher` to publish the library when consumers need the changes.
 - **Last, ask whether design is done.** If yes, `ds-crd-update` sets `design_specs: complete`.
