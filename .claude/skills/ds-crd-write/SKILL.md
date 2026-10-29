@@ -204,8 +204,6 @@ House rules a new author won't know. Apply them as you write, and say so when yo
 - **Dark mode follows the theme philosophy** in `design_foundations` § Mode axes.
 - **Contrast is validated per theme, not per variant.** In a multi-brand system, brand colours
   cap what's promisable.
-  Never guarantee a ratio a brand can't deliver — flag it for per-brand validation (config
-  § Accessibility → `contrast_must_pass`).
 - **Token mapping tables are the designer's job.** Don't demand one in a CRD.
 - **Figma can't express everything.** Where a behaviour is code-only, say so and state what Figma
   approximates it with.

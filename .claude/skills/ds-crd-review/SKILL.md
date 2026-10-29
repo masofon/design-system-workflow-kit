@@ -57,8 +57,6 @@ Check claims against `design_foundations`, not against memory or another system'
   wherever a CRD reaches for them
 - Dark-mode claims respect the theme philosophy in § Mode axes
 - Contrast is validated per THEME, not per variant, and brand colours cap what is promisable.
-  A CRD must not guarantee a ratio a brand cannot deliver — flag for per-brand validation
-  (config § Accessibility → `contrast_must_pass`)
 
 ### 3. Atom vs consumer semantics
 
