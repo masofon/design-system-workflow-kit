@@ -53,6 +53,9 @@ They differ in what counts as the truth:
 
 1. **A component design exists**: the design is the truth, the CRD governs behaviour.
 2. **A concept or flow design exists**: promote the instance into a real component first.
+   **Defaults get neutral copy** that says what goes there ("Card title"), each exposed as a TEXT
+   prop. The flow's copy stays as overrides on the concept instance and moves into the usage
+   examples (`documentation-frames.md` § Usage frame).
 3. **Code exists, no design**: the **code is authoritative**. Deviations are findings to report,
    not silent improvements.
 4. **Neither**: **nothing is authoritative**. The output is a proposal. Say so, and flag every

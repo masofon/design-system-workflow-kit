@@ -140,7 +140,8 @@ The header, then two doc-subhead groups, in this order.
    (a card, say), not a bare frame.
 
 - **Live instances** with properties changed. Nothing detached.
-- **Real product copy**, and icons chosen by description. Never placeholder text ("Heading text").
+- **Real product copy**, set through the TEXT props, and icons chosen by description. The
+  component's neutral defaults ("Card title") never appear in an example.
 - **A behaviour sequence goes step by step in one row.** Overflow B3 → B5 is one row, not three.
 - **Each caption says what differs from the default.**
 
