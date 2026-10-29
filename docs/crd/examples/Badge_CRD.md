@@ -23,8 +23,7 @@ last_updated: 2026-10-06
 # CRD: Badge
 
 <!-- Worked example for the invented Acme design system; every token, link and decision is
-illustrative. Acme has brand validation and CMS behaviour switched off (config § CRDs), so
-sections 4 and 5 are omitted. -->
+illustrative. -->
 
 ---
 
@@ -170,7 +169,7 @@ A small, non-interactive label — usually a count, a status or a short piece of
 
 ---
 
-# 6 · Documentation guidance
+# 4 · Documentation guidance
 
 ## Usage
 

@@ -106,8 +106,8 @@ Claude can work out the technical details. These are people decisions it will as
   go.
 - **Contrast:** which brand and theme combinations must pass, and which have latitude.
 - **Access:** who can read the repo and the docs site.
-- **Which optional parts you use:** stable components shipped ahead of a design, brand
-  validation, CMS behaviour.
+- **Which optional parts you use:** stable components shipped ahead of a design, and amendments
+  to shipped components.
 - **Your page layout:** keep your existing component-page layout, or use the kit's.
 - **On GitHub:** whether you use milestones, a Projects board or labels for status, and whether
   PRs use closing keywords. Setup recommends an answer for each.

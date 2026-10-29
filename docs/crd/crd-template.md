@@ -11,8 +11,6 @@ status:
   requirements: not_started
   design_specs: not_started
   implementation: not_started
-  brand_validation: not_started
-  cms_behaviour: not_started
   docs_guidance: not_started
 figma:
 docs_site:
@@ -105,49 +103,7 @@ flight; deleted when design closes it. -->
 
 ---
 
-# 4 · Brand validation
-
-<!-- Only if config § CRDs → brand_validation is Yes. Otherwise delete this section and its
-status key. -->
-
-## Contrast pairings
-
-**Token pattern:** <!-- the component token pattern from design-foundations.md. Only if the
-component has its own component tokens; otherwise delete this line. -->
-
-**Validated at brand creation:**
-
-| Foreground token | Background token | Minimum ratio |
-|---|---|---|
-
-**Validated at placement (transparent fills):**
-
-| Foreground token | Validated against | Minimum ratio |
-|---|---|---|
-
-**Exemptions:**
-
-## Validation logic notes
-
----
-
-# 5 · CMS behaviour
-
-<!-- Only if config § CRDs → cms_behaviour is Yes. Otherwise delete this section and its
-status key. -->
-
-**Layout constraints:**
-
-**Exposed properties:**
-
-| Property | Options | Default | Notes |
-|---|---|---|---|
-
-**Guardrails:**
-
----
-
-# 6 · Documentation guidance
+# 4 · Documentation guidance
 
 ## Usage
 
@@ -163,4 +119,4 @@ status key. -->
 
 ---
 
-<!-- # 7 · Migration — only while a change requires consumer action -->
+<!-- # 5 · Migration — only while a change requires consumer action -->

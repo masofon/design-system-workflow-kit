@@ -53,8 +53,6 @@ Check claims against `design_foundations`, not against memory or another system'
   system defines). Deprecated tokens (config § Tokens → `deprecated_name`) are a finding
   wherever a CRD reaches for them
 - Dark-mode claims respect the theme philosophy in § Mode axes
-- If section 4 is in use: a pairing whose foreground carries alpha belongs under **Validated at
-  placement**, not brand creation — check the token's value
 - Contrast is validated per THEME, not per variant, and brand colours cap what is promisable.
   A CRD must not guarantee a ratio a brand cannot deliver — flag for per-brand validation
   (config § Accessibility → `contrast_must_pass`)
@@ -109,18 +107,18 @@ that.
   finding — renumber; a renumbered prefix in a built one is a **critical** finding — it breaks
   the test names
 - `[open]` on anything provisional, `[review]` on anything not machine-testable. An unmarked
-  hedge is a finding; so is a stale marker on something design has since settled. Section 6 is
+  hedge is a finding; so is a stale marker on something design has since settled. Section 4 is
   un-ID'd advice and carries neither
 - `C` statements are only copy the component owns or enforces. Consumer copy advice in section 1
-  is a finding — it belongs in section 6 under Content
+  is a finding — it belongs in section 4 under Content
 - An `I` statement restating an `F` statement is a finding — it should cite the ID; so is a `C`
   that only restates an `F`
-- A statement or decision naming a text style, px value or token is a finding — Figma holds those
-  (section 4's pairing list excepted). So is a house term nobody can look up (`crd_how_to`
+- A statement or decision naming a text style, px value or token is a finding — Figma holds
+  those. So is a house term nobody can look up (`crd_how_to`
   § Keeping it tight)
 - Figma-only axes and props (a Figma-only breakpoint, say) have a Properties row saying so
-- A section 6 line restating a section 1 statement without citing its ID is a finding; so is a
-  When-not line that repeats Scope instead of naming the alternative. Dev-facing lines in section 6
+- A section 4 line restating a section 1 statement without citing its ID is a finding; so is a
+  When-not line that repeats Scope instead of naming the alternative. Dev-facing lines in section 4
   are not — it serves docs generation and the usage agent alike
 - Leftover template stubs (`* YYYY-MM-DD:`, an empty `* C1:`) are housekeeping
 - Ruled out carries the rejections, each with its why. Empty Ruled out on a CRD full of
@@ -128,8 +126,8 @@ that.
 - Open questions have an owner and a By. A row with neither is not a question
 - **Code properties and Figma/code mapping do not exist in the template** — the dev team owns
   the API and the docs site documents it. Never ask for them
-- Sections 4 to 6 serve brand, CMS and docs consumers after ship. Incomplete is fine
-  pre-design and a finding post-ship; empty is never a reason to delete them
+- Section 4 serves docs consumers after ship. Incomplete is fine pre-design and a finding
+  post-ship; empty is never a reason to delete it
 
 ### 7. Boundaries & siblings
 
@@ -158,7 +156,7 @@ name what is missing.
 
 Often where the best findings are. Load `figma:figma-use`, then read the component page
 read-only (the CRD's `figma:` link). Compare its demo frames, usage frame included, against
-section 1 and section 6:
+section 1 and section 4:
 
 - A demo showing something a statement forbids, or a "when not to use" case presented as normal
 - A statement, state or variant no demo shows, where a demo would help someone use it

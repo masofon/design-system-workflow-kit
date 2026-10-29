@@ -47,7 +47,7 @@ The four conditions in `crd_how_to` § The ready-for-dev gate:
 
 - `requirements: complete` and `design_specs: complete`
 - **(human)** Design review held during design — ask who held it, and whether it covered the
-  full § 1 against the library set and section 6. Ask it that way: the review happens while
+  full § 1 against the library set and section 4. Ask it that way: the review happens while
   designing, not as a separate step after this run
 - Zero `[open]` markers anywhere in section 1
 - Every Open questions row closed, or `deferred: <reason>`
@@ -77,13 +77,10 @@ shipped component:
 - Rejected options in Ruled out; Migration written if consumers must act
 - Version bumped per § Versioning (major; on 0.x, 1.0.0 only if the contract is complete)
 
-### 1.4 CRD later sections — warn
+### 1.4 CRD documentation guidance — warn
 
-Sections 4–6 against `crd_how_to` § Section by section and `ds-crd-review` § 6 Completeness against the template:
-§ 6 Usage filled from an interview and never restating § 1. § 4 only if config § CRDs →
-`brand_validation` is Yes: it lists the foreground/background pairings runtime validates, no
-measured ratios. § 5 only if config § CRDs → `cms_behaviour` is Yes and the component becomes a
-CMS block.
+Section 4 against `crd_how_to` § Section by section and `ds-crd-review` § 6 Completeness against
+the template: Usage filled from an interview, never restating § 1.
 
 ### 1.5 Figma library — block
 

@@ -46,11 +46,11 @@ Apply the core, plus the profile for the document in hand.
 
 **CRD**: files in config § Paths → `crd_dir`. Apply `crd_how_to` § Keeping it tight; it is the
 home of the CRD rules and wins over anything here. Flag a `C` statement that is advice to the
-consumer, but don't move it: moving it to section 6 changes the contract. **Flag every value in a
+consumer, but don't move it: moving it to section 4 changes the contract. **Flag every value in a
 statement or decision** (a px value, a token path, a text style name) and every undefined house
-term; removing one can change what the line requires, so the owning skill decides. Cut a section 6 line
-that restates a section 1 statement down to the consequence plus the statement's ID
-(`crd_how_to` § Section by section, section 6).
+term; removing one can change what the line requires, so the owning skill decides. Cut a
+section 4 line that restates a section 1 statement down to the consequence plus the statement's ID
+(`crd_how_to` § Section by section, section 4).
 
 **Skill**: apply the core, but **keep the *why* behind a rule.** In a skill, the reason is
 often what lets the model apply the rule to a case it doesn't name. Cut repetition, not

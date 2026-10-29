@@ -23,8 +23,7 @@ last_updated: 2026-10-06
 # CRD: Switch
 
 <!-- Worked example for the invented Acme design system: a CRD early in its life, requirements
-drafted and design not started. Every reference is illustrative. Acme has brand validation and
-CMS behaviour switched off (config § CRDs), so sections 4 and 5 are omitted. -->
+drafted and design not started. Every reference is illustrative. -->
 
 ---
 
@@ -195,7 +194,7 @@ None.
 
 ---
 
-# 6 · Documentation guidance
+# 4 · Documentation guidance
 
 ## Usage
 

@@ -78,14 +78,10 @@ Every section states its audience at the top. In short:
 | 1 Requirements | Pre-design | Designer | Everyone: it is the contract |
 | 2 Design specifications | Post-design | Designer | Devs & build agents |
 | 3 Implementation | Pre-dev & during | Developer | Build agents, future maintainers |
-| 4 Brand validation *(optional)* | Post-design | Designer | Brand setup & runtime brand checks, not the build |
-| 5 CMS behaviour *(optional)* | Post-design | Designer | CMS block work & runtime agents, not the build |
-| 6 Documentation guidance | Post-design & post-dev | Designer & dev | Docs generation & usage agents |
-| 7 Migration | Only when consumers must act | Whoever changes it | Consumers of the component |
+| 4 Documentation guidance | Post-design & post-dev | Designer & dev | Docs generation & usage agents |
+| 5 Migration | Only when consumers must act | Whoever changes it | Consumers of the component |
 
-Sections 4 to 6 exist because the CRD stays relevant after the component ships. Agents building products, setting up brands & writing documentation consume them later. If you are building the component, skip them; do not delete them.
-
-**Sections 4 & 5 are optional for the whole system**, switched by config § CRDs → `brand_validation` & `cms_behaviour`. Brand validation is for systems where customers or sub-brands supply their own colours at runtime; CMS behaviour is for components a content editor configures. When the config says No, the section & its `status` key are deleted from every CRD, & nothing below that mentions them applies.
+Section 4 exists because the CRD stays relevant after the component ships. Agents building products & writing documentation consume it later. If you are building the component, skip it; do not delete it.
 
 ## The requirements contract
 
@@ -136,13 +132,13 @@ Bigger uncertainties that need a named owner & an actual decision go in the Open
 * Zero [open] markers anywhere in section 1
 * Every Open questions row closed or explicitly marked "deferred: [reason]"
 
-Brand validation, CMS behaviour & docs guidance are not dev blockers; they serve later consumers, so they do not hold the gate.
+Documentation guidance is not a dev blocker; it serves later consumers, so it does not hold the gate.
 
 It is computed rather than stored because a stored flag can be true in the front matter & false in reality the moment anything upstream changes. Anyone — human or agent — can check the condition in seconds, & a build agent verifies it before starting rather than trusting a flag someone set optimistically.
 
 There are two reviews, & neither is a front matter field — a stored flag would only claim a conversation happened.
 
-* **Design review, before ready for dev.** A designer checks the CRD against the component's set in the Figma library: the design covers every statement, intent is captured, every dual option (link or button, badge or chip) is impossible to miss in both places, nothing contradicts the file, & section 6 is sound. It is the one part of the condition nothing else can infer, so a human confirms it when the `ds-ready-for-dev` skill asks.
+* **Design review, before ready for dev.** A designer checks the CRD against the component's set in the Figma library: the design covers every statement, intent is captured, every dual option (link or button, badge or chip) is impossible to miss in both places, nothing contradicts the file, & section 4 is sound. It is the one part of the condition nothing else can infer, so a human confirms it when the `ds-ready-for-dev` skill asks.
 * **Dev review, during dev.** The developer's first step on the develop work item: is every statement buildable & testable, does anything conflict with the existing API or code? Done against the Figma file, so the CRD-to-Figma join is checked twice. It is part of the build's done condition — the develop PR does not merge until it is held & anything it raised is resolved in the CRD.
 
 If a build agent finds an [open] marker or an open question, it stops & flags rather than guessing. That is deliberate. Guessing is how components get built wrong quietly.
@@ -190,7 +186,7 @@ What goes in each section, & who consumes it. The template is a bare skeleton; t
 
 **Motion is described in words:** what moves, what triggers it, & what happens under reduced motion. A Figma motion prototype is a rough preview, never the spec. No durations or easings: they are values (§ Keeping it tight), & live in Figma or motion tokens.
 
-**Content (C)** — only copy the component owns or enforces: fixed or translated strings, truncation at N characters, casing through the text style. If a build test cannot fail on it, it is not a C statement. A C that only restates an F ("Heading required" beside F1) is redundant — the F holds it. Advice to the consumer on what to write goes to section 6, under Content.
+**Content (C)** — only copy the component owns or enforces: fixed or translated strings, truncation at N characters, casing through the text style. If a build test cannot fail on it, it is not a C statement. A C that only restates an F ("Heading required" beside F1) is redundant — the F holds it. Advice to the consumer on what to write goes to section 4, under Content.
 
 **Accessibility (A)** — component-specific only; see § What accessibility belongs in a CRD. Include the ARIA attributes & values this component sets, what it announces & when, its focus order & focus management, & anything unusual to it. Do not restate global standards.
 
@@ -206,15 +202,11 @@ What goes in each section, & who consumes it. The template is a bare skeleton; t
 
 **3 · Implementation** — implementation decisions before you build, dev notes & deviations during (see above).
 
-**4 · Brand validation** *(only if config § CRDs → `brand_validation` is Yes)* — a token-pattern line only when the component has its own component tokens, then token pairings needing contrast validation, split by when they can be checked: at brand creation (opaque fills) or at placement (transparent fills needing parent surface context). Check the token's value, not its name: any alpha makes it transparent. Plus exemptions & anything the validation logic needs. Consumed by brand setup tooling, not the component build.
+**4 · Documentation guidance** — when to use, when not to (pointing at the alternative each time), common patterns, consumer content guidance, & gotchas. This is where `[open]` statements land when they turn out to be advice rather than requirements. It is advice, not contract: no IDs & no `[review]`. Seeded during the requirements interview & filled in a short interview once design is done, so it never waits for a docs pass. Two audiences read it — docs site generation & the designer-facing usage agent — so a line aimed at developers ("pass the real count") belongs as much as one aimed at designers.
 
-**5 · CMS behaviour** *(only if config § CRDs → `cms_behaviour` is Yes)* — what a self-serve user gets when they add this as a block: layout constraints, the exposed subset of properties, & guardrails protecting them from broken or inaccessible configurations. Consumed by the CMS block work & the runtime agent, not the component build.
+Section 4 never restates section 1. A line that repeats a statement cites its ID or goes. When-not names the alternative to use; it is not Scope's out-of-scope line again. A gotcha gives the consequence in plain words, then the ID.
 
-**6 · Documentation guidance** — when to use, when not to (pointing at the alternative each time), common patterns, consumer content guidance, & gotchas. This is where `[open]` statements land when they turn out to be advice rather than requirements. It is advice, not contract: no IDs & no `[review]`. Seeded during the requirements interview & filled in a short interview once design is done, so it never waits for a docs pass. Two audiences read it — docs site generation & the designer-facing usage agent — so a line aimed at developers ("pass the real count") belongs as much as one aimed at designers.
-
-Section 6 never restates section 1. A line that repeats a statement cites its ID or goes. When-not names the alternative to use; it is not Scope's out-of-scope line again. A gotcha gives the consequence in plain words, then the ID.
-
-**7 · Migration** — only while a change requires consumer action.
+**5 · Migration** — only while a change requires consumer action.
 
 ## What accessibility belongs in a CRD
 
@@ -281,7 +273,7 @@ lands in the design system.
 The version in the front matter tracks this document's maturity, at a glance. The skills apply these rules; it is here so you can read a version, not so you can set one. It has no relationship to the components package version: the package releases the whole library at once, so a per-component CRD version could not mirror it even if you wanted it to.
 
 * **Patch** — a change in sections 1 to 3, which the build reads: corrections, clarifications, a decision entry, a closed open question, the `docs_site` link added after build.
-* **Minor** — a section reaches complete. The only bump sections 4 to 6 get.
+* **Minor** — a section reaches complete. The only bump section 4 gets.
 * **1.0.0** — the CRD is complete & the contract is fixed. That is the gate, not the ship date; dev happening afterwards is a patch.
 * **Major** — an amendment completes. Each major version is one generation of the component's requirements contract, so 2.0.0 is the contract after the first amendment.
 * **Pre-1.0 amendments** — on a 0.x CRD, a completed amendment goes to 1.0.0 only if the fold leaves the contract complete (no markers, no open questions); otherwise it is a minor bump.
@@ -322,7 +314,7 @@ Every line of a CRD is loaded into an agent's context each time the component is
 * **A rejection lives in Ruled out only.** A decision names the choice made & does not re-argue the options it beat.
 * **A decision never restates a statement.** Cite the ID & add only the why; if the statement already carries its why, there is no entry.
 * **No process.** Build steps, publish state, the date something changed in Figma, draft history & tooling notes belong in the context card, the handover or the commit.
-* **No values in statements or decisions.** No text style names, px values or token names — Figma holds them. The statement says what the part does, & the component's Figma set is the reference. Section 4's pairing list, where used, is the exception: token names by design.
+* **No values in statements or decisions.** No text style names, px values or token names — Figma holds them. The statement says what the part does, & the component's Figma set is the reference.
 * **No undefined house terms.** A word the reader can't look up (anatomy, this doc, the glossary at config § Paths → `glossary`) is defined where it first appears, or replaced with plain words.
 * **Name doctrine, do not explain it.** "Atom versus consumer", not a paragraph explaining it.
 * **The deletion test**, for every line without an ID: delete it — would an agent build the component wrong? If not, it goes.

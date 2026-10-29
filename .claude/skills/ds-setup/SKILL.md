@@ -119,7 +119,7 @@ Go section by section through `.claude/design-system.config.md`, in file order. 
 | **Paths** | Where phase 0 put the kit's docs |
 | **Sources** | Package names from `package.json` files. `token_css` from the token build output. `icons_dir` from the tree. `code_connect_files` from any `*.figma.*` files. `docs_site_link_pattern` from the Storybook config and one live URL. Ask about `repo_access` and `docs_site_access` |
 | **Tracker** | Run the adapter's setup choices first (e.g. GitHub § 0); they fill *Expressed as*. Roles and stages from the tracker's own types, states, issue types or Project status options. `ticket_ref` from history. **Tags**: list the labels already in use, with counts, and ask which form the taxonomy and what each is for. Always ask the house rules |
-| **CRDs** | Existing CRDs, if any. Ask whether the team uses stable components, brand validation and CMS behaviour. **An existing spec or CRD corpus** in another format is converted on touch by `ds-crd-update`, never in bulk: note where it lives and move on |
+| **CRDs** | Existing CRDs, if any. Ask whether the team uses stable components. **An existing spec or CRD corpus** in another format is converted on touch by `ds-crd-update`, never in bulk: note where it lives and move on |
 | **Figma** | `org` from `whoami`. Library conventions from the library's existing pages and component sets: set naming, page naming, WIP and protected pages, canvas colour, any status symbols, the reference page (the most recent one carrying the ready-for-dev symbol). `assets_page` and `app_icon_name` from existing icon components. **Ask whether the library has documentation utility components** (section header, doc row, anatomy pin) for `doc_utilities`; if not, the design skills build them once, locally. Ask for whatever else the library doesn't show yet. Then run **§ Page layout** below |
 | **Tokens** | Deprecation naming and any no-export marker from existing variable names |
 | **Accessibility** | List the brand × theme modes from the token files, and ask which must pass contrast and which have latitude. Look for an existing accessibility rules file or agent in the repo. If there is one, ask: point `rules` at theirs, merge the kit's starter into it, or keep both. If there isn't, keep the kit's starter (`docs/design/accessibility.md`) and say it's theirs to edit |
@@ -205,7 +205,7 @@ Read-only. Report **block** findings first, then **warn**, then what passed in o
 - Glossary Part 1 still holds only the Acme example.
 
 **Not applicable** (one line, not a finding): features the config switches off, e.g. stable
-components or brand validation.
+components or amendments.
 
 End with what to do next: usually *"Spin up tickets for {a component}"* or *"Write the CRD for
 {a component}"*.

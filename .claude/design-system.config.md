@@ -177,8 +177,6 @@ person, then apply. They never auto-apply and never invent one.
 | `lifecycle` | requested · backlog · active · stable · built · deprecated · rejected | Defined in `crd_how_to` § Lifecycle |
 | `stable_components` | | Yes / No. Implementations shipped ahead of a designed core component |
 | `amendments` | Yes | Changes to a shipped component go through an amendment block |
-| `brand_validation` | | Yes / No. Section 4: runtime contrast checks when customers or sub-brands supply their own colours |
-| `cms_behaviour` | | Yes / No. Section 5: how a content editor configures the component in a CMS |
 | `simplify_before_commit` | Yes | `ds-simplify-prose` runs on every CRD commit |
 
 ## Figma

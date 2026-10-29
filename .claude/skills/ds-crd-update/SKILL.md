@@ -98,10 +98,6 @@ When conversion goes ahead:
 * **Distrust derived front-matter values.** A status flag inherited from an older format or set
   by a migration script is a claim, not a fact — check it against the content. A migration that
   matched a *heading* over template placeholder will mark an empty section complete.
-* **Deriving contrast pairings from code: check which selector uses which token.** Don't infer
-  from the token's name — one whose name reads like link text can turn out to be the
-  current-page colour. Where a child component supplies the colour, point at that component's
-  CRD instead of duplicating its pairings.
 
 ### Cutting, merging or moving a statement
 
@@ -111,8 +107,8 @@ Rule and reason: `crd_how_to` § The requirements contract — Gaps in the numbe
    code and may have tests), a `docs_site:` link, or the component's folder under config § Repo
    → `component_code_dir`.
 2. **Not built — renumber.** Close the gap in that prefix, in order. In the same commit, rewrite
-   every citation of a moved ID: Design and Implementation decisions, sections 4 and 5 where
-   used, other statements, and any other CRD citing this one's IDs (search the folder for the
+   every citation of a moved ID: Design and Implementation decisions, other
+   statements, and any other CRD citing this one's IDs (search the folder for the
    CRD's name next to an ID).
 3. **Built — retire.** Delete the statement, leave its number unused, never reuse it, and log
    why in Design decisions.
@@ -189,7 +185,7 @@ Everything in the block is maintained by skills, not by hand. This skill writes:
   is set, update the component page's context card Status to match when `status:` changes
   (`ds-design-component` § 1), or say it needs doing
 * `version:` per `crd_how_to` § Versioning: **once per PR**, at the highest level the PR reached;
-  sections 4–6 bump only when one reaches complete
+  section 4 bumps only when it reaches complete
 * `lifecycle:` — `backlog` → `active` when design starts; `built` when the component ships and
   the `docs_site:` link is written
 * `figma:` and `docs_site:` when those links become real
@@ -236,7 +232,7 @@ person approves is what gets committed. Simplify never rewords approved lines at
 them instead.
 
 **Before every commit** — the first and every fix-up round — **run `ds-simplify-prose`** on the
-lines this session changed, and check section 6: anything this session learned that is advice
+lines this session changed, and check section 4: anything this session learned that is advice
 rather than contract (an `[open]` moved out of section 1, a gotcha found while reconciling) goes
 there. Write only what the work produced. Then run `ds-crd-write` § Phase 5's checks for values,
 undefined terms and borrowed statements over the same lines.

@@ -381,10 +381,8 @@ written into the CRD. They live in Figma and the tokens.
   paints, not just `mainComponent`). Targeted binding checks miss nodes you didn't target, and
   skipping instance interiors is how stale override bindings hide.
 - Temp swatch frames with explicit variable modes, `screenshot()`, then **delete them**.
-- **Contrast results never go in a CRD.** If config § CRDs → `brand_validation` is Yes, what
-  design hands the CRD is the list of fg/bg token pairings runtime validates against a brand
-  (section 4, via `ds-crd-update`). A quick check in the default brand is a fine sanity pass,
-  not a deliverable; raise anything that fails in chat.
+- **Contrast results never go in a CRD.** Check contrast across the modes that must pass
+  (config § Accessibility → `contrast_must_pass`) and raise anything that fails in chat.
 - **After a rejected or interrupted write, re-read before re-running** (`design_foundations`
   § Working in Figma via MCP).
 - Return created and mutated node IDs from every script.
@@ -400,7 +398,7 @@ written into the CRD. They live in Figma and the tokens.
 - **Last, ask whether design is done.** If yes, `ds-crd-update` sets `design_specs: complete`.
   **For an amendment, closing design includes the fold**: hand to `ds-crd-update` in the same
   pass (pre-fold sweep, rewrite section 1, delete superseded lines and the amendment block, write
-  Migration). Then hand to `ds-crd-write` for a short section 6 interview (patterns, gotchas,
+  Migration). Then hand to `ds-crd-write` for a short section 4 interview (patterns, gotchas,
   content guidance) while the design is fresh. Nothing else prompts any of these.
 - **Then `ds-ready-for-dev`** checks the whole hand-off and moves the tickets.
 

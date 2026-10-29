@@ -1,6 +1,6 @@
 ---
 name: ds-crd-write
-description: Write, spec or draft a design system CRD (Component Reference Document) for a component — or fill in a later section of an existing one. Researches the component type, reads related CRDs and the built Figma and code artefacts, then interviews the designer. Use when asked to write, spec, specify, draft, scope, define or document a component; to start or flesh out requirements, specs or specifications for a new or planned component; to capture what a component needs to do; or to complete design specifications, brand validation, CMS behaviour or documentation guidance after design or build. For amending, converting or reconciling an EXISTING CRD use ds-crd-update; for critiquing a draft use ds-crd-review; for reading a CRD to implement against it use ds-crd-read.
+description: Write, spec or draft a design system CRD (Component Reference Document) for a component — or fill in a later section of an existing one. Researches the component type, reads related CRDs and the built Figma and code artefacts, then interviews the designer. Use when asked to write, spec, specify, draft, scope, define or document a component; to start or flesh out requirements, specs or specifications for a new or planned component; to capture what a component needs to do; or to complete design specifications or documentation guidance after design or build. For amending, converting or reconciling an EXISTING CRD use ds-crd-update; for critiquing a draft use ds-crd-review; for reading a CRD to implement against it use ds-crd-read.
 ---
 
 # Write a CRD
@@ -59,13 +59,10 @@ since happened. Skip to the phase that owns that section; the interview still ru
 | 1 Requirements | Pre-design | The interview |
 | 2 Design specifications | Post-design | The component's set in the Figma library |
 | 3 Implementation | Pre-dev and during | The developer |
-| 4 Brand validation *(if config § CRDs → `brand_validation`)* | Post-design | The component's tokens |
-| 5 CMS behaviour *(if config § CRDs → `cms_behaviour`)* | Post-design | The designer |
-| 6 Documentation guidance | Post-design and post-dev | Both |
+| 4 Documentation guidance | Post-design and post-dev | Both |
 
-Sections 4 to 6 aren't dev blockers — they serve brand, CMS and docs consumers after the
-component ships, so never delete them because a build doesn't need them. Sections 4 and 5 exist
-only if the config switches them on; otherwise leave them and their `status` keys out.
+Section 4 isn't a dev blocker — it serves docs consumers after the component ships, so never
+delete it because a build doesn't need it.
 
 ## Phase 1 — Context, before asking anything
 
@@ -161,7 +158,7 @@ Move on when a topic is settled; circle back rather than block.
 5. **Content — two destinations.** Copy the component owns or enforces (fixed or translated
    strings, truncation, casing through the text style) becomes ID'd `C` statements, because a
    build test can fail on them. What the consumer should write (voice, length, must and must not)
-   is advice, and goes to section 6 under **Content**, un-ID'd. Text case is a house rule (config
+   is advice, and goes to section 4 under **Content**, un-ID'd. Text case is a house rule (config
    § Writing); don't restate it in either place.
 6. **Accessibility — component-specific only.** Read `crd-how-to.md` § What accessibility belongs
    in a CRD first and follow it. Ask about the ARIA attribute and value this component sets, what
@@ -173,7 +170,7 @@ Move on when a topic is settled; circle back rather than block.
 8. **Usage, now — don't skip it.** Draft "when to use / when not to use" from Purpose and Scope
    while it's fresh, add the consumer Content guidance from step 5, and read it back. Each "when
    not to" names its alternative. Write only what the interview produced; never invent patterns.
-   No `[review]` markers — section 6 is advice, not contract. Set `docs_guidance: in_progress`;
+   No `[review]` markers — section 4 is advice, not contract. Set `docs_guidance: in_progress`;
    the post-design interview finishes it.
 
 ### Techniques that matter
@@ -188,7 +185,7 @@ Move on when a topic is settled; circle back rather than block.
 - **A hedge is a prompt, not a marker.** "Probably" or "we might" is often a designer thinking
   aloud. Ask for their view, and push back if a precedent disagrees. Only if they still can't
   decide does it become `[open]`; read the marker back so they know it's recorded as provisional.
-- **Separate must from should.** Advice that survives goes to section 6, not the contract.
+- **Separate must from should.** Advice that survives goes to section 4, not the contract.
 - **Big uncertainties get the table.** Anything needing an owner and a real decision becomes an
   Open questions row — always ask "by when?". The By column is often the real content.
 - **Don't lead.** Present options with trade-offs. Research is context, not a recommendation,
@@ -269,8 +266,8 @@ after review, then check:
 - [ ] No fact appears twice; nothing restates Figma, the code or the reference docs
 - [ ] Accessibility passes the boundary test — nothing in it would be true of another component
 - [ ] Every unresolved hedge became `[open]`; every non-testable statement carries `[review]`
-- [ ] `C` statements are only copy the component owns; consumer copy advice is in section 6
-- [ ] Interview step 8 ran: section 6 holds what the interview produced, and nothing it didn't
+- [ ] `C` statements are only copy the component owns; consumer copy advice is in section 4
+- [ ] Interview step 8 ran: section 4 holds what the interview produced, and nothing it didn't
 - [ ] No template stubs left (`* YYYY-MM-DD:`, an empty `* C1:`)
 - [ ] Every decision and Ruled out entry has a why
 - [ ] Precedent conflicts are honoured or explicitly overruled in Design decisions

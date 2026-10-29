@@ -61,7 +61,7 @@ local components, and reuse them on every page so every page reads the same:
 **Doc row text:**
 
 - **CRD reference** (eyebrow): where the rule lives, e.g. `CRD § Behaviour · B3, B4, B5` or
-  `CRD § 6 Usage · Patterns`.
+  `CRD § 4 Usage · Patterns`.
 - **Title**: what the row shows.
 - **Description**: a one-line caption of the specimen, e.g. "Five avatars and three hidden, as the
   container narrows." It never re-explains the rule; the eyebrow points at it. *Using it in Figma*

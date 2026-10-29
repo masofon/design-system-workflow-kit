@@ -59,7 +59,7 @@ amendment in flight: a `# Amendment` section above section 1.
 Read the named place and answer from it. Section numbers follow config § Paths →
 `crd_template`.
 
-- **Which component for X?** Purpose, Scope and `## Ruled out` across the candidates; §6 Usage
+- **Which component for X?** Purpose, Scope and `## Ruled out` across the candidates; §4 Usage
   for when to pick one over another. Name the one to use and the one-line reason; mention the
   runner-up only when the choice is close.
 - **Which token for Y?** Read `design_foundations` § Component tokens and § Finding tokens
@@ -76,7 +76,7 @@ Read the named place and answer from it. Section numbers follow config § Paths 
 - **What props does it take?** Built: the component's types in code, plus the Code Connect
   mapping. Not built: §2 Properties in Figma, labelled "planned — the dev team owns the final
   API".
-- **How may I use it?** §6 Usage and Content, §1 Functional requirements, `## Gotchas`.
+- **How may I use it?** §4 Usage and Content, §1 Functional requirements, `## Gotchas`.
 - **Which icon?** Search the icon names; give the exact name and the import or Figma component.
   If none fits, say so. Never suggest a typed glyph.
 - **What accessibility does it handle?** The CRD's Accessibility section says what the component
