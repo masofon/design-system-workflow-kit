@@ -53,9 +53,12 @@ They differ in what counts as the truth:
 
 1. **A component design exists**: the design is the truth, the CRD governs behaviour.
 2. **A concept or flow design exists**: promote the instance into a real component first.
-   **Defaults get neutral copy** that says what goes there ("Card title"), each exposed as a TEXT
-   prop. The flow's copy stays as overrides on the concept instance and moves into the usage
-   examples (`documentation-frames.md` § Usage frame).
+   **The concept's raw values are intent, not spec.** Before building, map each one to a token and
+   show the person a table: value → token → gap (what's off, or "no match"). **Where nothing
+   matches, ask.** Never round to the nearest token or invent one. Gaps that need a new token join
+   § 0's list. **Defaults get neutral copy** that says what goes there ("Card title"), each
+   exposed as a TEXT prop. The flow's copy stays as overrides on the concept instance and moves
+   into the usage examples (`documentation-frames.md` § Usage frame).
 3. **Code exists, no design**: the **code is authoritative**. Deviations are findings to report,
    not silent improvements.
 4. **Neither**: **nothing is authoritative**. The output is a proposal. Say so, and flag every
@@ -378,6 +381,22 @@ written into the CRD. They live in Figma and the tokens.
 - **Verify paints by rendering.** A binding can be present and still paint nothing; the tell is
   `paint.color` reading white (`design_foundations` § Working in Figma via MCP). Fix by
   recreating the node in the importing script.
+- **Whole-page token sweep: every property that can take a variable has one.** Check every node
+  on the page, including variants, doc frames and the inside of consumed instances, against
+  everything Figma lets you bind:
+  - **Paints**: every fill and stroke. Gradient stops count: each stop is bound to a colour
+    variable.
+  - **Spacing**: padding on all four sides, and gap (both gaps on a grid or wrapping row).
+  - **Shape**: corner radius (per corner when the corners differ) and stroke weight (per side
+    when the sides differ).
+  - **Sizes**: width and height where they're fixed, plus min and max width and height.
+  - **Effects**: shadow and blur values, or an effect style where `design_foundations` § Effects
+    and icons applies effects that way.
+  - **Opacity**, and anything else the node's `boundVariables` can hold.
+
+  **Anything left raw is a finding to fix**, except zero values and the CRD's exemptions. An
+  exemption is a value code calculates, or one whose value or unit Figma doesn't support yet. Each
+  is recorded in the CRD via `ds-crd-update` and flagged with a Dev Mode annotation on the node.
 - **Whole-page style sweep**: every text node on the page has a text style and a token fill,
   including labels you cloned or moved, not just nodes you created. Text content is in config
   § Writing → `text_case`, with casing applied by the style. No glyph icons (§ 4).
@@ -391,9 +410,9 @@ written into the CRD. They live in Figma and the tokens.
   replacement). **Sweep by collection, not just by name**: list the variable collection of every
   binding on the page; any deprecated or retired collection is a finding even when the token
   name looks current.
-- **After creating or restructuring variants, rerun the raw-paint sweep over every variant you
+- **After creating or restructuring variants, rerun the token sweep over every variant you
   touched**, descending into consumed instances you swapped or restructured (their resolved
-  paints, not just `mainComponent`). Targeted binding checks miss nodes you didn't target, and
+  values, not just `mainComponent`). Targeted binding checks miss nodes you didn't target, and
   skipping instance interiors is how stale override bindings hide.
 - Temp swatch frames with explicit variable modes, `screenshot()`, then **delete them**.
 - **Contrast results never go in a CRD.** Check contrast across the modes that must pass

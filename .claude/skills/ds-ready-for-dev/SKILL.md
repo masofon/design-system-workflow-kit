@@ -95,7 +95,7 @@ Read-only `use_figma` passes on the page and set. Check against:
 | Figma-only axes and props; mode-dependent literals right at every mode | `ds-design-component` § 3 |
 | Code-only props | `ds-design-component` § 4 |
 | Dev Mode annotations for what Figma can't express, each applied once | `ds-design-component` § 8 |
-| Every binding resolves across every mode axis (`design_foundations` § Mode axes); whole-page text style and token fill sweep | `ds-design-component` § 7 |
+| Every binding resolves across every mode axis (`design_foundations` § Mode axes); whole-page token sweep (every property that can take a variable) and text style sweep | `ds-design-component` § 7 |
 | No binding to a deprecated variable collection, and no lower-tier token bound straight onto a component | `ds-design-component` § 7 |
 | Motion: if the component moves, one Dev Mode annotation on the set carries the build values | `ds-design-component` § 8 |
 | Slot and prop-ref parity across variants; default variant top-left, option order, set layout | `ds-design-component` § 3 (Laying out the set) and § 4 |
