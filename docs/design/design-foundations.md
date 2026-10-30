@@ -360,7 +360,8 @@ product.** Write the date, and re-test before trusting it.
   also how a note reaches a dev agent: `get_design_context` returns the description (and dev
   resource links, below), not Dev Mode annotations.
 - **A keyframe's easing controls the segment going *into* it**, so the first keyframe's easing is
-  never used. Put motion values in one annotation on the set, not on each keyframe. *(2026-10)*
+  never used. Animations go on an instance in the motion frame, never on the set
+  (`ds-design-component` → `documentation-frames.md` § Motion frame). *(2026-10)*
 - **An agent can't post Figma comments.** Draft the comment, with the node link, for a person to
   paste. *(2026-10)*
 - **Dev resource links can't be written by an agent.** `use_figma` blocks them both ways, so a

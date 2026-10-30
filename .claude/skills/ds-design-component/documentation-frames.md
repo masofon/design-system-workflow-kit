@@ -169,15 +169,25 @@ The header, then one doc row per mode axis that matters for this component
 
 ## Motion frame
 
-Only when the component moves. The header, then one doc row per movement, in the CRD's order.
+Only when the component moves. The header, then one animation frame per movement the CRD lists,
+in the CRD's order: typically open, close and the reduced-motion version, plus any others.
 
-- **Specimen**: the start and end states side by side, live instances, with the trigger in the
-  title ("Opens on click").
-- **Caption**: what moves and how, in plain words, and what happens under reduced motion. The CRD
-  reference in the eyebrow.
-- **Values**: not in the caption. They're in the one Dev Mode annotation on the set
-  (`SKILL.md` § 8).
-- A Figma motion prototype can sit beside it as a preview. It's never the spec.
+- **Real animations.** Build each one as a Figma timeline animation: load `figma:figma-use-motion`
+  alongside `figma-use`. If the motion API throws "not a supported API", motion isn't enabled for
+  this person: stop and tell them. Never fall back to start and end states side by side.
+- **Never on the component set.** Each animation frame holds one live instance of the component,
+  and the animation goes on that instance or its layers. The set stays static.
+- **Name**: `{Component} — {Movement}`, e.g. `Modal — Open`, `Modal — Close`,
+  `Modal — Open, reduced motion`. Someone opening a link to just that frame must know what it is.
+- **Caption**, inside the animation frame so it travels with it: the trigger, and what moves and
+  how in plain words. For a reduced-motion version, what changes. The CRD reference in the eyebrow.
+  No durations or easings: the animation carries them.
+- **Values**: the animation is the source dev builds from (`get_motion_context`). Use the
+  system's motion tokens or animation styles where they exist; otherwise set them on the keyframes.
+- **One timeline.** Figma timelines belong to the top-level frame, so every animation frame plays
+  on the motion frame's timeline from 0. Set its duration to cover the longest movement.
+- **Verify by export.** A screenshot shows only the resting state: export the motion frame and
+  sample frames (`figma-use-motion` § Verifying the animation).
 
 ## Gotchas for every frame
 

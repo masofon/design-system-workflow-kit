@@ -95,8 +95,8 @@ that.
 
 - Behaviours Figma cannot express — viewport-relative caps, grow-then-scroll, container-derived
   constraints — must be marked code-only, with the Figma approximation stated
-- Motion is described in words (what moves, the trigger, reduced motion), with a Figma
-  prototype treated as a preview only. Any duration or easing in the CRD is a finding
+- Motion is described in words (what moves, the trigger, reduced motion). The values live in
+  the Figma animations on the motion frame. Any duration or easing in the CRD is a finding
 
 ### 6. Completeness against the template
 

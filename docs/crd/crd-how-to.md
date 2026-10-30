@@ -184,7 +184,7 @@ What goes in each section, & who consumes it. The template is a bare skeleton; t
 
 **Behaviour (B)** — interactions, keyboard behaviour, responsive behaviour, animation & motion. Figma cannot express this, so be complete here rather than thorough about visual description.
 
-**Motion is described in words:** what moves, what triggers it, & what happens under reduced motion. A Figma motion prototype is a rough preview, never the spec. No durations or easings: they are values (§ Keeping it tight), & live in Figma or motion tokens.
+**Motion is described in words:** what moves, what triggers it, & what happens under reduced motion. No durations or easings: they are values (§ Keeping it tight), & live in the Figma animations on the component page's motion frame.
 
 **Content (C)** — only copy the component owns or enforces: fixed or translated strings, truncation at N characters, casing through the text style. If a build test cannot fail on it, it is not a C statement. A C that only restates an F ("Heading required" beside F1) is redundant — the F holds it. Advice to the consumer on what to write goes to section 4, under Content.
 
