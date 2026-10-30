@@ -169,8 +169,9 @@ The header, then one doc row per mode axis that matters for this component
 
 ## Motion frame
 
-Only when the component moves. The header, then one animation frame per movement the CRD lists,
-in the CRD's order: typically open, close and the reduced-motion version, plus any others.
+Only when the CRD lists motion; a component without any gets no motion frame. The header, then
+one animation frame per movement the CRD lists, in the CRD's order: typically open, close and the
+reduced-motion version, plus any others.
 
 - **Real animations.** Build each one as a Figma timeline animation: load `figma:figma-use-motion`
   alongside `figma-use`. If the motion API throws "not a supported API", motion isn't enabled for

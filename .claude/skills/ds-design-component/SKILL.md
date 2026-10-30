@@ -427,11 +427,11 @@ written into the CRD. They live in Figma and the tokens.
 - **Dev Mode annotations** for the values and rules code needs. **Annotate a repeated structure
   once**, on the first or default variant, never on every variant; explain it in context on the
   page (a short note beside the set) instead.
-- **Motion**: if the component moves, the animations in the motion frame carry the build values,
-  one per movement the CRD lists (`documentation-frames.md` § Motion frame). One Dev Mode
-  annotation on the set says what moves, the motion tokens used and the reduced-motion behaviour,
-  and links each animation frame. No durations or easings in it: the animation is the source. The
-  CRD describes the motion in words only.
+- **Motion**: only if the CRD lists motion. Then the animations in the motion frame carry the
+  build values, one per movement the CRD lists (`documentation-frames.md` § Motion frame). One Dev
+  Mode annotation on the set says what moves, the motion tokens used and the reduced-motion
+  behaviour, and links each animation frame. No durations or easings in it: the animation is the
+  source. The CRD describes the motion in words only.
 - Update the CRD via `ds-crd-update`. Props tables must match the built component.
 - Remind config § Roles → `publisher` to publish the library when consumers need the changes.
 - **Last, ask whether design is done.** If yes, `ds-crd-update` sets `design_specs: complete`.

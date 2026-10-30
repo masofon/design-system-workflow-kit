@@ -33,7 +33,7 @@ is deliberate, ask.
 3. **New component or amendment?** An amendment's container follows config § Tracker spin-up →
    `amendment`. Its checks add § 1.3. Skip § 1.3 entirely if config § CRDs → `amendments` is No.
 4. Read config § Paths → `crd_how_to` § The ready-for-dev gate. Load `figma:figma-use` before
-   any `use_figma` read, and `figma:figma-use-motion` too if the component moves.
+   any `use_figma` read, and `figma:figma-use-motion` too if the CRD lists motion.
 
 ## 1. Check pass
 
@@ -97,7 +97,7 @@ Read-only `use_figma` passes on the page and set. Check against:
 | Dev Mode annotations for what Figma can't express, each applied once | `ds-design-component` § 8 |
 | Every binding resolves across every mode axis (`design_foundations` § Mode axes); whole-page token sweep (every property that can take a variable) and text style sweep | `ds-design-component` § 7 |
 | No binding to a deprecated variable collection, and no lower-tier token bound straight onto a component | `ds-design-component` § 7 |
-| Motion: if the component moves, a real Figma animation per movement the CRD lists, reduced motion included, each on its own named frame holding an instance, none on the set; one Dev Mode annotation on the set links them, with no durations or easings | `ds-design-component` § 8, `documentation-frames.md` § Motion frame |
+| Motion: only if the CRD lists motion; with none, no motion frame or annotation is needed and this row passes. Otherwise a real Figma animation per movement the CRD lists, reduced motion included, each on its own named frame holding an instance, none on the set; one Dev Mode annotation on the set links them, with no durations or easings | `ds-design-component` § 8, `documentation-frames.md` § Motion frame |
 | Slot and prop-ref parity across variants; default variant top-left, option order, set layout | `ds-design-component` § 3 (Laying out the set) and § 4 |
 | Page frames and layout. If config § Figma → `page_layout` is `team`: matches `reference_page` and the Library conventions keys. If `kit`: config `doc_frames` and the kit guidance | `documentation-frames.md` beside `ds-design-component` |
 
