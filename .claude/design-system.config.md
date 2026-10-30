@@ -203,7 +203,7 @@ person, then apply. They never auto-apply and never invent one.
 | `canvas_background` | | Page background colour, if standardised |
 | `context_card` | | A frame at the top of each component page carrying its metadata |
 | `doc_frames` | Component · Anatomy · Usage · Modes · Motion | Top-level frames on a component page, left to right. Each only where the component needs it |
-| `frame_names` | `{Component}`, `{Component} — anatomy`, `— usage`, `— modes`, `— motion` | |
+| `frame_names` | `{Component}`, `{Component} — anatomy`, `— usage`, `— modes`, `{Component} — {Movement}` per motion frame | |
 | `frame_heading` | `0N · {Name}` | e.g. `01 · Button`, `02 · Anatomy` |
 | `frame_spacing` | 160 | Horizontal gap between top-level frames, px |
 | `frame_fill` | | Token for the doc frames' background. Usually the page background token |

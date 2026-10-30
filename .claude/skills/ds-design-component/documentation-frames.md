@@ -2,8 +2,9 @@
 
 Reference for `ds-design-component` § 1. A component page carries up to five top-level frames, left
 to right, config § Figma → `frame_spacing` apart, in the order config `doc_frames` gives:
-typically **component → anatomy → usage → modes → motion**. They're split because components get big, and
-each frame answers one question.
+typically **component → anatomy → usage → modes → motion**. They're split because components get
+big, and each frame answers one question. Motion is a column of frames, one per movement
+(§ Motion frames).
 
 **Every name, size and colour here comes from config § Figma → Library conventions** and the
 team's own design system. This file sets the structure; the config and the DS set the look.
@@ -167,27 +168,29 @@ The header, then one doc row per mode axis that matters for this component
   other axis, columns are the breakpoints. It reads better than one row per combination.
 - **Verify with `resolveForConsumer`.** Screenshots of different modes can look alike.
 
-## Motion frame
+## Motion frames
 
-Only when the CRD lists motion; a component without any gets no motion frame. The header, then
-one animation frame per movement the CRD lists, in the CRD's order: typically open, close and the
-reduced-motion version, plus any others.
+Only when the CRD lists motion; a component without any gets none. **One top-level frame per
+movement the CRD lists**, in the CRD's order: typically open, close and the reduced-motion version,
+plus any others. They're separate because Figma gives each top-level frame one timeline: in a shared
+parent, every animation would play on the same clock. They sit in the motion column, last in
+`doc_frames` order, stacked vertically, config § Figma → `frame_spacing` apart.
 
 - **Real animations.** Build each one as a Figma timeline animation: load `figma:figma-use-motion`
   alongside `figma-use`. If the motion API throws "not a supported API", motion isn't enabled for
   this person: stop and tell them. Never fall back to start and end states side by side.
-- **Never on the component set.** Each animation frame holds one live instance of the component,
-  and the animation goes on that instance or its layers. The set stays static.
+- **Never on the component set.** Each motion frame holds one live instance of the component, and
+  the animation goes on that instance or its layers, never on the frame itself. The set stays
+  static.
 - **Name**: `{Component} — {Movement}`, e.g. `Modal — Open`, `Modal — Close`,
   `Modal — Open, reduced motion`. Someone opening a link to just that frame must know what it is.
-- **Caption**, inside the animation frame so it travels with it: the trigger, and what moves and
-  how in plain words. For a reduced-motion version, what changes. The CRD reference in the eyebrow.
-  No durations or easings: the animation carries them.
+- **Header and caption** in every motion frame, so each one travels on its own: the trigger, and
+  what moves and how in plain words. For a reduced-motion version, what changes. The CRD reference
+  in the eyebrow. No durations or easings: the animation carries them.
 - **Values**: the animation is the source dev builds from (`get_motion_context`). Use the
   system's motion tokens or animation styles where they exist; otherwise set them on the keyframes.
-- **One timeline.** Figma timelines belong to the top-level frame, so every animation frame plays
-  on the motion frame's timeline from 0. Set its duration to cover the longest movement.
-- **Verify by export.** A screenshot shows only the resting state: export the motion frame and
+- **Timeline**: set each frame's duration to its own movement.
+- **Verify by export.** A screenshot shows only the resting state: export each motion frame and
   sample frames (`figma-use-motion` § Verifying the animation).
 
 ## Gotchas for every frame
