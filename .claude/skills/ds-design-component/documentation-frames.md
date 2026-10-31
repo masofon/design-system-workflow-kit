@@ -143,6 +143,8 @@ The header, then two doc-subhead groups, in this order.
 - **Live instances** with properties changed. Nothing detached.
 - **Real product copy**, set through the TEXT props, and icons chosen by description. The
   component's neutral defaults ("Card title") never appear in an example.
+- **Real variety.** Vary the content (short and long copy, different tones, one action or two) and
+  the context (different screens and flows). Never two near-copies of the same example.
 - **A behaviour sequence goes step by step in one row.** Overflow B3 → B5 is one row, not three.
 - **Each caption says what differs from the default.**
 
@@ -189,7 +191,13 @@ parent, every animation would play on the same clock. They sit in the motion col
   in the eyebrow. No durations or easings: the animation carries them.
 - **Values**: the animation is the source dev builds from (`get_motion_context`). Use the
   system's motion tokens or animation styles where they exist; otherwise set them on the keyframes.
-- **Timeline**: set each frame's duration to its own movement.
+- **Enter starts hidden, exit ends hidden.** An enter's first keyframe is the hidden state: it
+  holds back to t=0, so no t=0 keyframe is needed. An exit's last keyframe is the hidden state.
+- **Timeline**: Figma loops every timeline and has no play-once setting, so pad each frame: a still
+  1.5s lead-in before the first keyframe and a 1.5s hold after the last. Set the total with
+  `setTimelineDuration`.
+- **Padding annotation** on each motion frame: the lead-in and hold are for presentation only. Dev
+  builds the animation's own duration and easing, not the holds.
 - **Verify by export.** A screenshot shows only the resting state: export each motion frame and
   sample frames (`figma-use-motion` § Verifying the animation).
 
