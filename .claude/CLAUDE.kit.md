@@ -1,12 +1,8 @@
-# Design system workflow: CLAUDE.md block
-
-Paste everything below the line into your repo's `CLAUDE.md`, or let `ds-setup` do it. It holds
-the standing rules every session should follow. The values behind them (branches, tracker,
-roles, accessibility targets) live in `.claude/design-system.config.md`; setup is in `SETUP.md`.
-
----
-
 ## Design system workflow
+
+The kit's standing rules, installed as is and imported from the repo's `CLAUDE.md` with
+`@.claude/CLAUDE.kit.md`. Never reword or merge them into `CLAUDE.md`: every repo runs the same
+rules as the kit. Changes go to config § Roles → `skill_owners`, like the skills.
 
 - **The config is the source of system facts.** Read `.claude/design-system.config.md` for
   branches, the tracker, roles, paths and accessibility targets. Never guess a value it holds;
@@ -16,6 +12,31 @@ roles, accessibility targets) live in `.claude/design-system.config.md`; setup i
 - **Skills own the workflows.** CRDs, Figma components, tickets and the ready-for-dev hand-off
   each have a `ds-*` skill in `.claude/skills/`. Don't edit skills or their reference docs from
   inside other work; propose the change to config § Roles → `skill_owners`.
+
+### Asking questions
+
+Every `ds-*` skill that asks the person anything asks in this order:
+
+1. **Show what you found first**, as plain text: findings, the gap table, any table they need
+   to answer. No question dialog in the same turn: the dialog hides the text.
+2. **End that turn with one line**: how many questions, then "Shall we start the interview?"
+3. **On a yes, ask one question at a time** with AskUserQuestion, and take each answer in
+   before asking the next. Never several at once.
+   - The recommended option comes first, marked "(Recommended)", then the alternatives, each
+     with its trade-off in the description.
+   - A preview (a mockup, a table, a snippet) wherever seeing the options helps.
+   - An open question (a purpose, a name) still gets options: proposals to react to, with
+     "Other" for their own words.
+
+One question and nothing to show: ask it straight away.
+
+### Only what exists now counts
+
+**Anything deleted was deleted on purpose**: Figma nodes and pages, files, branches, tickets,
+the output of earlier runs. Never mention it, offer to restore or recreate it, or ask about it.
+Don't read version history or earlier runs to find what used to be there. If something that
+exists now is broken, such as a binding, a property reference or a link, report the breakage as
+it stands, not the deletion.
 
 ### Repo
 

@@ -14,9 +14,10 @@ tiers, modes, text styles and spacing; Part 2 for the Figma API facts this skill
 **Any change you didn't make was deliberate.** Nodes will move, vanish or get renamed between your
 scripts. That's collaboration, not corruption.
 
-- Don't investigate, restore or recreate something that vanished. Adapt, and say so in one line.
-- Flag it only if it breaks something that must hold: a token binding, a property reference, a
-  published instance.
+- Something that vanished is gone on purpose (`.claude/CLAUDE.kit.md` § Only what exists now
+  counts). Adapt without mentioning it.
+- Flag only what's broken now in something that must hold: a token binding, a property
+  reference, a published instance.
 - Re-read live state before acting on geometry, and don't cache node ids across a long session.
 - **Odd geometry may be deliberate.** An offset or overlap you didn't expect may be an authored
   state. Ask before "fixing" it.
@@ -34,6 +35,9 @@ switching before starting. Design calls made here become the component every con
 contributors often can't judge the advice themselves. Recommend, never block.
 
 ## Two questions before anything else
+
+Every question this skill asks, these two included, follows `.claude/CLAUDE.kit.md` § Asking
+questions.
 
 **Is the person a designer?** Designers get options and loops, not tutorials. Non-designers get the
 reasoning behind a choice, industry defaults, and no assumed Figma fluency.

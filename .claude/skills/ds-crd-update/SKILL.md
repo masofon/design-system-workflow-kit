@@ -70,7 +70,8 @@ a link fix or a changelog line doesn't.
   converts it — make that one edit and leave the rest.
 * **Conversion is agreed, never automatic.** Tell the person the CRD is in an older format and
   get a yes first. Convert paired with them: interview them on anything open, unclear or missing
-  rather than resolving it yourself. If they say no, make only the edit in hand.
+  rather than resolving it yourself (`.claude/CLAUDE.kit.md` § Asking questions). If they say
+  no, make only the edit in hand.
 
 When conversion goes ahead:
 

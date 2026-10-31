@@ -194,6 +194,8 @@ Report the earlier comments' status first, then new concerns.
 - **Respect deliberate decisions.** Parked items, accepted gaps and "TBD in Design" markers are
   not concerns — never re-raise them
 - When a claim cannot be verified against a source, mark it **"verify"**, not "wrong"
+- **Questions for the person come after the report**, per `.claude/CLAUDE.kit.md` § Asking
+  questions
 - **Figma findings are drafted for a person to paste.** An agent can't post Figma comments
   (`design_foundations` § Working in Figma via MCP), so give the node link and the comment text
 

@@ -113,21 +113,14 @@ Skip this phase for bespoke components; the closest analogous pattern can still 
 The person is thinking about their component, not about you. Every extra sentence is one they
 must read before answering.
 
-- **Ask with the `AskUserQuestion` tool, not as a list in a message.** Anything framed as a
-  choice should be: the person picks rather than composes, and can add notes or take "Other". A
-  text list of six questions gets one answer back; a picker gets six.
-  - Up to four questions per call, two to four options each.
-  - **Put the trade-off in each option's description.** That's where someone less familiar with
+- **Ask per `.claude/CLAUDE.kit.md` § Asking questions**: Phase 1 and 2 findings first, then
+  one question at a time. The person picks rather than composes, and can add notes or take
+  "Other".
+  - **The trade-off in each option's description** is where someone less familiar with
     components learns why the choice matters.
-- **Options in plain text are a short list, not prose.** Two or three, one line each, with the
-  trade-off.
-  - A house default goes first, marked "(Recommended)".
+  - A house default is the recommended option.
   - `multiSelect` where several answers can be true — which variant axes apply, which states
     exist.
-  - One call at a time. Respond to the answers before asking the next set.
-- **Plain text only for genuinely open questions** — purpose, naming the anatomy. Even then,
-  offer a proposal to react to: people correct far more readily than they compose. Three to five
-  per message, never more.
 - **No preamble or echo.** Acknowledge in a few words at most, then ask.
 - **One line of context per question, only when it isn't self-evident.**
 - **Don't narrate the process** — phases, what you're about to read, that you follow a skill.
@@ -190,8 +183,8 @@ Move on when a topic is settled; circle back rather than block.
 - **Separate must from should.** Advice that survives goes to section 4, not the contract.
 - **Big uncertainties get the table.** Anything needing an owner and a real decision becomes an
   Open questions row — always ask "by when?". The By column is often the real content.
-- **Don't lead.** Present options with trade-offs. Research is context, not a recommendation,
-  unless they ask for one.
+- **Say what the recommendation rests on**: a house default, a precedent CRD or research. Give
+  the alternatives' trade-offs honestly; recommending isn't deciding for them.
 
 ## Doctrines to hold the draft against
 

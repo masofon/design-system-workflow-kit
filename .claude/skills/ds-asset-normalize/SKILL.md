@@ -181,7 +181,8 @@ Deduce `{name}` per asset, in priority order:
 2. **Descendant layer names** that aren't generic (`Vector`, `Group`, `path`, `Layer_1`,
    `Component N`, `Frame N`).
 3. **Screenshot + visual identification** — `await node.screenshot()` and recognize the logo.
-4. Still unknown → collect and **ask the person in one batch** at the end; never guess-name.
+4. Still unknown → collect them and, at the end, list them with node links, then **ask one at a
+   time** (`.claude/CLAUDE.kit.md` § Asking questions); never guess-name.
 
 Cleaning rules:
 

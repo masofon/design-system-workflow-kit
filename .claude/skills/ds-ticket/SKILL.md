@@ -93,7 +93,7 @@ one-off labels; the config list is the taxonomy.
 
 ## Ask, don't guess
 
-Use **AskUserQuestion**, not a question buried in prose, and ask about several things at once.
+Ask per `.claude/CLAUDE.kit.md` § Asking questions, never as a question buried in prose.
 
 | Setting | Ask when |
 |---|---|

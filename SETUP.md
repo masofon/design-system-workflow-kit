@@ -19,8 +19,8 @@ you.
 ## What's in the kit
 
 ```
-CLAUDE.kit.md                   ← rules to merge into your repo's CLAUDE.md (setup offers to)
 .claude/
+  CLAUDE.kit.md                 ← the kit's standing rules, imported from your CLAUDE.md
   design-system.config.md       ← your system's details
   skills/ds-*/                  ← the workflow, one skill per job
 docs/
@@ -67,7 +67,9 @@ your docs live) and proposes where each kit file goes:
   there, so they can't move.
 - **The CRD and design docs** go wherever your docs already live, e.g. `docs/design-system/`.
   Claude records the location in the config, so the skills find them.
-- **`CLAUDE.kit.md`** gets merged into your `CLAUDE.md` later, not copied as is.
+- **`.claude/CLAUDE.kit.md`** is copied as is, and your `CLAUDE.md` gets one line,
+  `@.claude/CLAUDE.kit.md`, that loads it. Never merged or reworded, so your repo runs the kit's
+  rules word for word.
 - **README and SETUP** stay in the kit folder; they're for you, not the repo.
 
 You see the full map before anything is copied. Nothing existing gets overwritten: if a skill
@@ -87,7 +89,7 @@ Open Claude Code at your **repo root** (a new session, so the skills load) and s
 | 2. Connect | Signs in to the repo, Figma and your tracker; works out each address and proves it with a read | Run any sign-in command it hands you; paste your Figma file URLs |
 | 3. Config | Works out most values from your repo, tracker and Figma, shows them with evidence, then asks the rest | Confirm or correct; answer the questions |
 | 4. Foundations | Reads your token files and library and drafts your design foundations and categories | Confirm, and explain the *intent* behind your structure |
-| 5. Finishing | Offers: a custom skill prefix, tracker labels and boards, merging `CLAUDE.kit.md`, one PR for everything | Say yes or no to each |
+| 5. Finishing | Offers: a custom skill prefix, tracker labels and boards, one PR for everything | Say yes or no to each |
 | 6. Check | Reports anything a skill still can't find | Fix what it flags |
 
 **Nothing it works out is written without your confirmation**, and nothing outward-facing

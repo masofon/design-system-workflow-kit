@@ -140,7 +140,8 @@ page is eligible and leave it to them.
 - One-line verdict: **Ready**, or **Not ready — N blocks**.
 - **Block**, then **Warn** — concerns only, each quoting the line or naming the node, with the
   home of the rule it breaks.
-- **Human questions** — every (human) check, asked together.
+- **Human questions** — every (human) check, listed. Once the report is out, ask them one at a
+  time (`.claude/CLAUDE.kit.md` § Asking questions).
 - **Closure plan** — each move in § 3, with the item's owner where it isn't the person running
   this.
 - **Not checked**, and why — anything you couldn't reach (Figma unavailable, a PR in another

@@ -31,7 +31,8 @@ for all reads and writes.
 
 Static prototypes fake motion and state using offsets, overflow, clipping and alignment — those
 are the only tools available. So geometry that looks broken is frequently the design. **Never
-bundle it into a "fixed N pre-existing bugs" list; report it and ask.**
+bundle it into a "fixed N pre-existing bugs" list; report it and ask** (`.claude/CLAUDE.kit.md`
+§ Asking questions).
 
 Treat as deliberate until confirmed: absolute positioning inside auto-layout, negative
 coordinates, content wider than its container, clipped edges, non-`MIN` alignment, and above all

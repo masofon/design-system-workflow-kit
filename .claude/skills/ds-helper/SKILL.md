@@ -20,7 +20,8 @@ the reply. Answer from the sources, not from a summary here.
    component ("what do I use for an on/off setting?"), shortlist candidates by `name`, Purpose
    and Scope, then read them in full.
 3. **Ask only if the answer changes.** One clarifying question at most, and only when the
-   candidates genuinely diverge ("in a form you submit, or a setting that applies at once?").
+   candidates genuinely diverge ("in a form you submit, or a setting that applies at once?"),
+   asked per `.claude/CLAUDE.kit.md` § Asking questions.
 
 ## Sources, and which one wins
 

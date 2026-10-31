@@ -15,15 +15,14 @@ version of this flow.
   connections are re-checked, not redone, and only empty config values are revisited.
 - **Check** ("check the setup"): phase 6 only, read-only.
 
-**Which mode?** A folder holding `SETUP.md` and `CLAUDE.kit.md` is the kit's download folder:
-run install. A repo with the kit's skills in `.claude/skills/` and no `SETUP.md`: run setup.
+**Which mode?** A folder holding `SETUP.md` and `.claude/CLAUDE.kit.md` is the kit's download
+folder: run install. A repo with the kit's skills in `.claude/skills/` and no `SETUP.md`: run setup.
 
 ## Rules for the whole run
 
 - **Work out, confirm, then write.** Show each worked-out value with its evidence before
   writing it. Batch confirmations, one section at a time.
-- **Ask with AskUserQuestion**, several questions at once, and recommend an option where the
-  evidence leans one way.
+- **Ask per `.claude/CLAUDE.kit.md` § Asking questions**, recommending from the evidence.
 - **Contradictions are questions.** If the sources disagree, show both and ask. Never pick.
 - **Outward-facing writes need an explicit yes**, every time: creating labels, a Project, a
   GitHub Action, a branch, a PR. Reading never does.
@@ -48,7 +47,8 @@ keeps things.
    - Repo layout: monorepo or single package, where the docs live, and any existing
      `docs/`, `documentation/` or wiki folder.
    - `.claude/`: existing skills (any name clashes with `ds-*`?), `settings.json`, agents.
-   - `CLAUDE.md` or `AGENTS.md` at the root.
+   - `CLAUDE.md` or `AGENTS.md` at the root, and any kit rules merged into it by an older
+     install.
    - Existing component specs or CRDs, in any format. Note them; they're converted on touch
      later, never in bulk.
 3. **Propose a placement map** and show it as a table, *kit file → repo path*, marking each one
@@ -60,16 +60,18 @@ keeps things.
    | `.claude/design-system.config.md` | `.claude/` at the repo root | No. Every skill looks for it there |
    | `docs/crd/` (template, how-to, README, examples) | Beside the team's other docs, e.g. `docs/design-system/crd/` | Yes. Config § Paths records where |
    | `docs/design/` (foundations, classification, accessibility, glossary) | Beside the CRDs, e.g. `docs/design-system/` | Yes. Config § Paths and § Accessibility → `rules` record where |
-   | `CLAUDE.kit.md` | Merged into the root `CLAUDE.md` in phase 5, never copied as is | |
+   | `.claude/CLAUDE.kit.md` | `.claude/` at the repo root, copied as is, plus `@.claude/CLAUDE.kit.md` in the root `CLAUDE.md` (created if missing) | No. Never reworded or merged, so every repo runs the kit's rules word for word |
    | `README.md`, `SETUP.md` | Not installed: they're for the person installing | |
 
    - **A skill name clash**: never overwrite. Offer the kit's skill under a new prefix (config
      § System → `skill_prefix`), or a side-by-side diff for the person to decide.
+   - **Kit rules merged into `CLAUDE.md`** by an older install: replace them with the import
+     line, showing the lines that go. The team's own rules stay.
    - **A monorepo**: `.claude/` still goes at the repo root, where Claude Code is started.
      Ask where design system docs belong if there's more than one candidate.
-4. **Get a yes on the map**, then create a branch in the target repo, copy the files, and
-   write the chosen doc locations into the target's config § Paths and § Accessibility → `rules`. Don't commit yet; phase 5
-   commits everything together.
+4. **Get a yes on the map**, then create a branch in the target repo, copy the files, add the
+   import line to `CLAUDE.md`, and write the chosen doc locations into the target's config
+   § Paths and § Accessibility → `rules`. Don't commit yet; phase 5 commits everything together.
 5. **Hand over.** Skills load from the folder Claude Code starts in, so setup continues in a
    new session at the target repo root. Give the person two short commands (`cd` to the repo,
    start `claude`) and the sentence to say: *"Set up the workflow kit."*
@@ -77,9 +79,9 @@ keeps things.
 ## Phase 1: Prerequisites
 
 Confirm, from the repo root:
-- The kit is installed: `.claude/design-system.config.md`, `.claude/skills/ds-*`, and the CRD
-  and design docs at the paths in config § Paths. If anything is missing, point back to phase 0,
-  run from the kit's folder.
+- The kit is installed: `.claude/design-system.config.md`, `.claude/CLAUDE.kit.md` imported
+  from `CLAUDE.md`, `.claude/skills/ds-*`, and the CRD and design docs at the paths in config
+  § Paths. If anything is missing, point back to phase 0, run from the kit's folder.
 - Claude Code has the official Figma plugin. If not, stop and say how to add it.
 - The model. Recommend a top-tier model for setup; much of it is judgement.
 
@@ -108,13 +110,14 @@ Go section by section through `.claude/design-system.config.md`, in file order. 
 
 1. **Work out** what the sources show (table below), noting the evidence.
 2. **Keep the defaults** already in the file unless evidence contradicts them.
-3. **Confirm** the drafted values in one batch, then **ask** what's left.
+3. **Confirm** the drafted values: show them with their evidence, then one question to confirm
+   or correct them. Then **ask** what's left.
 4. **Write** the section, then move on.
 
 | Section | Work out from |
 |---|---|
 | **System** | `name` and `org` from the repo name and the Figma file names. Always ask for `support_channel` |
-| **Roles** | Suggest candidates from who publishes the Figma libraries (version history) and who merges PRs. **Always ask**: gates are people decisions |
+| **Roles** | Suggest candidates from who merges PRs. **Always ask**: gates are people decisions |
 | **Repo** | `host`, `slug`, `url` from the remote. `default_branch` from the repo settings. `integration_branch` from the base branch of recent merged PRs. `direct_push` and any required ticket check from branch protection and rulesets. `component_code_dir`, `token_export_dir` and `docs_site` by scanning the tree, the README, the repo homepage and any Storybook config. `commit_format` from commitlint, husky or similar config, else recent commit messages |
 | **Paths** | Where phase 0 put the kit's docs |
 | **Sources** | Package names from `package.json` files. `token_css` from the token build output. `icons_dir` from the tree. `code_connect_files` from any `*.figma.*` files. `docs_site_link_pattern` from the Storybook config and one live URL. Ask about `repo_access` and `docs_site_access` |
@@ -177,8 +180,6 @@ Offer each one; do each only on a yes.
 - **Tracker scaffolding.** Whatever the adapter's choices call for: labels for every tag (with
   descriptions from the config), a Project's status options, an optional ticket-ref check.
   Outward-facing: list exactly what you'll create, and get a yes.
-- **CLAUDE.md.** Offer to merge `CLAUDE.kit.md` into the repo's `CLAUDE.md` (or create one).
-  Show the result before writing.
 - **Example CRDs.** Keep them as reference until the team has written its own, then offer to
   remove them.
 - **Commit.** Everything setup wrote goes in one branch and PR, with a ticket ref if
@@ -195,6 +196,7 @@ Read-only. Report **block** findings first, then **warn**, then what passed in o
 - No adapter for the configured tracker, or the tracker unreachable.
 - A Figma file in the config or foundations that won't open, or no seat that can edit.
 - An empty Part 1 heading in foundations.
+- No `.claude/CLAUDE.kit.md`, or a root `CLAUDE.md` that doesn't import it.
 
 **Warn:**
 - A `config §` citation in a skill whose key doesn't exist in the config. This is a kit bug:
